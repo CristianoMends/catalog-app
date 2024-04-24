@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     padding: 5px;
-    background-color: #223;
+    background-color: var(--default-color-1);
     padding: 15px;
   }
   
@@ -17,20 +17,24 @@
     width: 50%;
     border-radius: 5px 0px 0px 5px;
     max-width: 400px;
+    box-shadow: var(--shadow);
+    border: none;
   }
   
   .search-button {
-    background-color: #555;
+    background-color: var(--default-color-2);
     color: #fff;
-    border: none;
     padding: 8px 0px;
     cursor: pointer;
     width: 20%;
     border-radius: 0px 5px 5px 0px;
     max-width: 100px;
+    box-shadow: var(--shadow);
+    border: none;
+
   }
   
   .search-button:hover {
-    background-color: #111;
+    background-color: var(--default-color-3);
   }
   

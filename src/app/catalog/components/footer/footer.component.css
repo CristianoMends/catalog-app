@@ -1,0 +1,5 @@
+.app-footer{
+    display: flex;
+    height: 100px;
+    background-color: var(--default-color-1);
+}

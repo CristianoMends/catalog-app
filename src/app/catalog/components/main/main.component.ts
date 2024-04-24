@@ -1,14 +1,53 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { ProductComponent } from "./product/product.component";
+import { CommonModule } from '@angular/common';
+import { Product } from '../../interface/product.interface';
+import { CatalogService } from '../../service/catalog.service';
+import { FooterComponent } from '../footer/footer.component';
+import { ResourceLoader } from '@angular/compiler';
 
 @Component({
-    selector: 'app-main',
-    standalone: true,
-    templateUrl: './main.component.html',
-    styleUrl: './main.component.css',
-    imports: [HeaderComponent, ProductComponent]
+  selector: 'app-main',
+  standalone: true,
+  templateUrl: './main.component.html',
+  styleUrl: './main.component.css',
+  providers: [CatalogService],
+  imports: [HeaderComponent, ProductComponent, CommonModule, FooterComponent]
 })
 export class MainComponent {
+  products: Product[] = [];
+  categories: string[] = [];
 
+  constructor(private productService: CatalogService) {}
+
+  ngOnInit(): void {
+    this.productService.getProducts().subscribe({
+      next: (data: Product[]) => {
+        this.products = data;
+        this.products.forEach(p =>{
+          if(!this.categories.includes(p.category)){
+            this.categories.push(p.category.toLocaleUpperCase());
+          }
+        })
+      },
+      error: (err) => console.error(err)
+    });
+  }
+  searchByName(searchTerm: string) {
+    this.productService.getProductsByName(searchTerm).subscribe({
+      next: (data: Product[]) => {
+        this.products = data;
+      },
+      error: (err) => console.error(err)
+    });
+  }
+  searchByCategory(category: string) {
+    this.productService.getProductsByCategory(category).subscribe({
+      next: (data: Product[]) => {
+        this.products = data;
+      },
+      error: (err) => console.error(err)
+    });
+  }
 }

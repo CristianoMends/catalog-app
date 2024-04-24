@@ -3,6 +3,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 5px 15px;
+    background-color: var(--default-color-1);
 }
 .navbar-brand{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -12,6 +13,8 @@
     padding: 0 10px;
 }
 .dropdown{
+    color: var(--default-color-1);
+    background-color: var(--default-color-1);
     width: auto;
 }
 .dropdown-button{
