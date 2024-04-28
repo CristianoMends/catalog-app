@@ -1,5 +1,19 @@
 .app-footer{
+    position: relative;
+    bottom: 0;
+    margin-top: 150px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100px;
     background-color: var(--default-color-1);
+}
+.copyright{
+    color: var(--default-color-2);
+}
+@media (max-width: 599px) {
+    .app-footer{
+        height: 50px;
+    }
+
 }

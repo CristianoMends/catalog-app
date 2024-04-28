@@ -1,0 +1,24 @@
+<div class="container">
+<div class="login-container">
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Digite seu email aqui" name="email" [(ngModel)]="getAuth().email" #email="ngModel" required>
+        <div *ngIf="email.invalid && email.touched" class="error">
+          Digite seu Email.
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Senha:</label>
+        <input type="password" placeholder="Digite sua senha aqui" id="password" name="password" [(ngModel)]="getAuth().password" #password="ngModel" required minlength="6">
+        <div *ngIf="password.invalid && password.touched" class="error">
+          Digite sua senha com pelo menos 6 caracteres.
+        </div>
+      </div>
+      
+      <button class="btn" type="submit" [disabled]="loginForm.invalid">Login</button>
+    </form>
+  </div>
+</div>
+  

@@ -1,8 +1,11 @@
 <nav class="app-nav-bar">
-    <span class="navbar-brand">Nome da loja</span>
-    <div class="dropdown">
-        <button class="dropdown-button">
-            <img src="/assets/dropdown_icon.png" alt="">
-        </button>
+    <div class="app-menu" [ngClass]=" visible ? 'visible' : 'invisible' ">
+        <a href="/register" class="btn" >Criar Conta</a>
+        <a href="/login" class="btn">Fazer Login</a>
     </div>
+    <button class="logo">Catálogo</button>
+    <app-search-bar></app-search-bar>
+    <button class="menu" (click)="toggleVisible()">
+        <i class="gg-menu"></i>
+    </button>
 </nav>
