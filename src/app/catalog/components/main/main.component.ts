@@ -9,27 +9,29 @@ import { ResourceLoader } from '@angular/compiler';
 import { PreviewComponent } from "./preview/preview.component";
 
 @Component({
-    selector: 'app-main',
-    standalone: true,
-    templateUrl: './main.component.html',
-    styleUrl: './main.component.css',
-    providers: [CatalogService],
-    imports: [HeaderComponent, ProductComponent, CommonModule, FooterComponent, PreviewComponent]
+  selector: 'app-main',
+  standalone: true,
+  templateUrl: './main.component.html',
+  styleUrl: './main.component.css',
+  providers: [CatalogService],
+  imports: [HeaderComponent, ProductComponent, CommonModule, FooterComponent, PreviewComponent]
 })
 export class MainComponent {
   products: Product[] = [];
   categories: string[] = [];
-  productPreView!:Product;
+  productPreView!: Product;
 
   constructor(
-    private productService: CatalogService) {}
+    private productService: CatalogService,
+    private preview: PreviewComponent
+  ) { }
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe({
       next: (data: Product[]) => {
         this.products = data;
-        this.products.forEach(p =>{
-          if(!this.categories.includes(p.category)){
+        this.products.forEach(p => {
+          if (!this.categories.includes(p.category)) {
             this.categories.push(p.category.toLocaleUpperCase());
           }
         })
@@ -56,5 +58,8 @@ export class MainComponent {
       },
       error: (err) => console.error(err)
     });
+  }
+  isVisible():string {
+    return this.preview.isVisible() ? 'opacity' : '';
   }
 }

@@ -1,7 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Injectable, Input } from '@angular/core';
 import { Product } from '../../../interface/product.interface';
 import { CommonModule } from '@angular/common';
 
+@Injectable({
+  providedIn: 'root'
+})
 @Component({
   selector: 'app-preview',
   standalone: true,

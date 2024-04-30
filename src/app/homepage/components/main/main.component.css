@@ -1,0 +1,83 @@
+main {
+    margin-top: 15px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px 0;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+span{
+    opacity: 0.7;
+}
+
+.steps {
+    margin: 25px 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    
+}
+
+.step {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    background-color: var(--default-color-2);
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+
+.arrow {
+    font-size: x-large;
+}
+
+.loginOrRegister {
+    display: flex;
+    flex-direction: column;
+}
+
+div {
+    text-align: center;
+}
+button{
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: underline;
+}
+button:hover{
+    cursor: pointer;
+    color: #fff;
+    background-color: var(--default-color-2);
+}
+.loginOrRegister{
+    margin: 25px 0;
+}
+.loginOrRegister div{
+    opacity: 0;
+    animation: fadein 0.5s linear forwards;
+}
+@keyframes fadein {
+    0%{
+        opacity: 0;
+        visibility: hidden;
+        width: 0;
+    }100%{
+        opacity: 1;
+        visibility: visible;
+        width: 100%;
+    }
+}
+html{
+    scroll-behavior: smooth;
+}

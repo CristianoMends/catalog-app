@@ -1,0 +1,30 @@
+<app-header></app-header>
+<main class="main-container">
+    <h1>AUMENTE A EXPOSIÇÃO DE SEUS PRODUTOS</h1>
+    <p>
+        Em apenas alguns passos você adquire seu Catálogo de Produtos Online, Experimente
+        Grátis!
+    </p>
+    <div class="steps">
+        <label for="step">Crie sua conta <span class="arrow">&RightArrow;</span> </label>
+        <a href="#" class="step" (click)="setLogin(false)">1</a>
+        <label for="step">Faça o login <span class="arrow">&RightArrow;</span></label>
+        <a href="#" class="step" (click)="setLogin(true)">2</a>
+        <label for="step">Cadastre produtos <span class="arrow">&RightArrow;</span></label>
+        <a href="#" class="step">3</a>
+        <label for="step">Compartilhe seu catálogo<span class="arrow">&RightArrow;</span></label>
+        <a href="#" class="step">4</a>
+    </div>
+
+</main>
+<div id="loginOrRegister" class="loginOrRegister">
+    <div *ngIf="!isLogin()">
+        <span>Já tem conta? <button (click)="loginToRegister()">Fazer login</button></span>
+        <app-register class="register"></app-register>
+    </div>  
+    <div *ngIf="isLogin()">
+        <span>Não tem conta? <button (click)="loginToRegister()">Crie sua conta</button></span>
+        <app-login class="login"></app-login>
+    </div>
+</div>
+

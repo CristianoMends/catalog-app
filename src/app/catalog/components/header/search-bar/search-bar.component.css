@@ -1,15 +1,15 @@
 
 .search-container {
-    width: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--default-color-1);
+    width: 100vw;
+    padding: 0 20%;
   }
   
   .search-input {
     border: none;
-    padding: 8px;
+    padding: 10px;
     width: 100%;
     outline: none;
     border-right: none;
@@ -22,9 +22,9 @@
   .search-button {
     background-color: var(--default-color-2);
     color: #fff;
-    padding: 8px 0px;
+    padding: 10px;
     cursor: pointer;
-    width: 40%;
+    width: max-content;
     border-radius: 0px 5px 5px 0px;
     box-shadow: var(--shadow);
     border: none;

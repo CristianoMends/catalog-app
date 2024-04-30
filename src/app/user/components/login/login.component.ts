@@ -12,19 +12,17 @@ import { UserService } from '../../service/user.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  constructor(private readonly service: UserService){}
-  private auth:Auth = {email:'', password:''};
-  private token:string = '';
 
-  getAuth():Auth{
+  constructor(private readonly service: UserService) { }
+  private auth: Auth = { email: '', password: '' };
+  private token: string = '';
+
+  getAuth(): Auth {
     return this.auth;
-  }
-  getToken():string{
-    return this.token;
   }
 
   onSubmit() {
-   const res = this.service.getAuth(this.auth.email, this.auth.password);
-   alert(res)
+    const res = this.service.getAuth(this.auth.email, this.auth.password);
+    console.log(res);
   }
 }

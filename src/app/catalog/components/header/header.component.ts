@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { SearchBarComponent } from './search-bar/search-bar.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { HeaderComponent as a } from '../../../homepage/components/header/header.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [SearchBarComponent, NavBarComponent],
+  imports: [a ,SearchBarComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
