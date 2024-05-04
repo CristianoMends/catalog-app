@@ -1,16 +1,16 @@
 import { Routes } from '@angular/router';
-import { MainComponent } from './catalog/components/main/main.component';
-import { MainComponent as MainComponentHome } from './homepage/components/main/main.component';
-import { LoginComponent } from './user/components/login/login.component';
-import { RegisterComponent } from './user/components/register/register.component';
-import { ProfileComponent } from './user/components/profile/profile.component';
+import { MainComponent } from './components/catalog/main.component';
+import { HomepageComponent as MainComponentHome } from './components/homepage/homepage.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 export const routes: Routes = [
     {
         path: '',
         component : MainComponentHome
     },{
-        path:'catalog',
+        path:'catalog/:username',
         component: MainComponent
     },{
         path:'login',

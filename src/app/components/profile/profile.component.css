@@ -1,0 +1,45 @@
+nav{
+    height: 50px;
+    background-color: var(--default-color-3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+nav a{
+    color: #fff;
+    text-decoration: none;
+}
+nav a:hover{
+    color: var(--default-color-2);
+}
+.product{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.options{
+    margin-top: 50px;
+    display: flex;
+    gap: 10px;
+}
+.options button{
+    padding: 5px;
+    border: none;
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+    background-color: var(--default-color-2);
+    color: #fff;
+    width: 55px;
+}
+.options button:hover{
+    background-color: var(--default-color-5);
+    cursor: pointer;
+}
+.store-info{
+    padding: 15px;
+}
+.dialog{
+
+}

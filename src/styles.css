@@ -3,6 +3,7 @@
     --default-color-2: #555;
     --default-color-3: #111;
     --default-color-4: #ccc;
+    --default-color-5: #700;
     --shadow: 1px 1px 5px var(--default-color-2);
 }
 
@@ -18,3 +19,5 @@ html, body {
     box-sizing: border-box;
     overflow-x: hidden;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

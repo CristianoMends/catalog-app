@@ -1,8 +1,0 @@
-<section class="app-product" loading="lazy">
-    <p class="product-id"><span>COD: </span>{{ product.id}}</p>
-    <img [src]="product.image" alt="{{ product.name }}" class="product-image">
-    <h3 class="product-name">{{ product.name }}</h3>
-    <p class="product-price"><span class="sign">R$ </span>{{ product.price.toFixed(2) }}</p>
-    <p class="product-payment"> em até 10x {{(product.price/10).toFixed(2)}} no cartão de credito </p>
-        <button class="preview-button" (click)="showPreview()">Visualizar</button>
-</section>

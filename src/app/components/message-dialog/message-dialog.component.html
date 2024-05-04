@@ -1,0 +1,13 @@
+<section class="container" *ngIf="isVisible()">
+
+    <div class="dialog-container">
+        <h1>{{getTitle()}}</h1>
+        <p>{{getMessage()}}</p>
+        <div>
+            <button (click)="runCancel()">Cancelar</button>
+            <button (click)="runConfirm()">Confirmar</button>
+        </div>
+    </div>
+
+
+</section>
