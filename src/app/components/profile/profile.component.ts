@@ -27,26 +27,36 @@ export class ProfileComponent {
 
     constructor(
         private userService: UserService,
-        private productService:ProductService,
-        private dialog: MessageDialogComponent,
+        private productService: ProductService,
         @Inject(PLATFORM_ID) private platformId: Object
     ) { }
 
     ngOnInit(): void {
         if (isPlatformBrowser(this.platformId)) {
-
-            this.userService.getProfile().subscribe({
+            const res = this.userService.getProfile();
+            res.subscribe({
                 next: (p: Profile) => { this.profile = p; },
                 error: (err: HttpErrorResponse) => {
-                    this.dialog.showMessage('Não autorizado','Para acessar seus dados, realize o login!');
+                    MessageDialogComponent.showMessage('Não autorizado', 'Para acessar seus dados, realize o login!',
+                        () => { window.location.href = '/' }
+                    );
 
                     console.error(`Error: ${err.message}\nName: ${err.name}\nHeaders: ${err.headers}\nStatus: ${err.status}\nStatusText: ${err.statusText}\nType: ${err.type}`)
                 }
             });
         }
     }
+    logout(){
+        MessageDialogComponent.showMessage('Deseja fazer logout?',undefined,
+        () =>{
+            this.userService.clearToken();
+            window.location.href = '/';
+        },
+        () => {
+            return;
+        });
+    }
     onProductSelected(): void {
-        console.log('id selecionado: ' + this.selectedProductId);
 
         if (this.selectedProductId && this.profile) {
 
@@ -57,18 +67,18 @@ export class ProfileComponent {
             });
         }
     }
-    deleteProduct(product_id:number){
+    deleteProduct(product_id: number) {
         const token = this.userService.getToken();
-        this.dialog.showMessage('Aviso','Isso irá deletar esse item permanentemente',
-        () => alert('cancelado'),//onCancel
-        () => console.log(this.productService.delete(product_id, token).subscribe({
-            next: (res) => { console.log(res) },
-            error: (err: HttpErrorResponse) => {
-                this.dialog.showMessage('Erro ao deletar','');
+        MessageDialogComponent.showMessage('Aviso', 'Isso irá deletar esse item permanentemente',
+            () => console.log('canceled'),//onCancel
+            () => this.productService.delete(product_id, token).subscribe({
+                next: (res) => { console.log(res) },
+                error: (err: HttpErrorResponse) => {
+                    MessageDialogComponent.showMessage('Erro ao deletar', '');
 
-                console.error(`Error: ${err.message}\nName: ${err.name}\nHeaders: ${err.headers}\nStatus: ${err.status}\nStatusText: ${err.statusText}\nType: ${err.type}`)
-            }
-        })));//onConfirm
+                    console.error(`Error: ${err.message}\nName: ${err.name}\nHeaders: ${err.headers}\nStatus: ${err.status}\nStatusText: ${err.statusText}\nType: ${err.type}`)
+                }
+            }));//onConfirm
 
         //
     }

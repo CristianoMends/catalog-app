@@ -2,12 +2,12 @@
 
     <div class="dialog-container">
         <h1>{{getTitle()}}</h1>
-        <p>{{getMessage()}}</p>
+        <p *ngIf="getMessage()">{{getMessage()}}</p>
         <div>
-            <button (click)="runCancel()">Cancelar</button>
-            <button (click)="runConfirm()">Confirmar</button>
+            <button *ngIf="getCancel()" (click)="runCancel()">Cancelar</button>
+            <button *ngIf="getConfirm()" (click)="runConfirm()">Ok</button>
         </div>
+
+        <app-loader *ngIf="hasLoad()"></app-loader>
     </div>
-
-
 </section>

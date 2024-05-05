@@ -1,5 +1,6 @@
 <app-header></app-header>
 <nav>
+    <button (click)="logout()">logout</button>
 </nav>
 <section class="store-info" *ngIf="profile">
     <p>Endereço de Calogo: <span><a href="/catalog/{{profile.fullname}}">http://localhost:3000/{{profile.fullname.toLocaleLowerCase().replace(' ','_')}}</a></span></p>

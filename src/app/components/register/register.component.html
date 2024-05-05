@@ -2,7 +2,7 @@
     <h2>Crie sua conta</h2>
     <form (ngSubmit)="onSubmit()" #registerForm="ngForm">    
       <label for="name">Nome:</label>
-      <input #name="ngModel" type="text" id="name" [(ngModel)]="user.name" name="name" required>
+      <input #name="ngModel" type="text" id="name" [(ngModel)]="user.fullName" name="name" required>
       <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
         Nome é obrigatório.
       </div>
