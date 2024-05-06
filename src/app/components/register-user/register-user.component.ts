@@ -4,16 +4,16 @@ import { FormControl, FormGroup, FormsModule, NgForm, Validators } from '@angula
 import { User } from '../../interface/user.interface';
 import { UserService } from '../../service/user.service';
 import { MessageDialogComponent } from '../message-dialog/message-dialog.component';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 
 @Component({
-  selector: 'app-register',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+    selector: 'app-register',
+    standalone: true,
+    templateUrl: './register-user.component.html',
+    styleUrl: './register-user.component.css',
+    imports: [CommonModule, FormsModule, MessageDialogComponent]
 })
-export class RegisterComponent {
+export class RegisterUserComponent {
   constructor(
     private userService:UserService,
     private dialog:MessageDialogComponent
@@ -37,7 +37,8 @@ export class RegisterComponent {
           MessageDialogComponent.showMessage('Usuário registrado com sucesso!',res.toString());
         },
         error:(err:HttpErrorResponse) =>{
-          MessageDialogComponent.showMessage('Erro ao salvar usuário!',err.message)
+          MessageDialogComponent.showMessage('Erro ao salvar usuário!'+err.error.message);
+          console.error(err);
         }
       })
       //window.location.href = 'catalog';

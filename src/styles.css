@@ -1,10 +1,10 @@
 :root {
     --default-color-1: #223;
-    --default-color-2: #555;
+    --btn-color-1: #555;
     --default-color-3: #111;
     --default-color-4: #ccc;
     --default-color-5: #700;
-    --shadow: 1px 1px 5px var(--default-color-2);
+    --shadow: 1px 1px 5px var(--btn-color-1);
 }
 
 

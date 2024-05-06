@@ -7,16 +7,16 @@ import { Product } from '../interface/product.interface';
   providedIn: 'root'
 })
 export class CatalogService {
-  private apiUrl ='http://localhost:3000/catalog/'; //'https://product-catalog-api-woad.vercel.app/catalog/cristiano_mendes';
+  private apiUrl = 'https://product-catalog-api-woad.vercel.app/'//'http://localhost:3000/catalog/'; //'https://product-catalog-api-woad.vercel.app/catalog/cristiano_mendes';
   constructor(private http: HttpClient) { }
 
   getProducts(username:string): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.apiUrl}${username}`);
+    return this.http.get<Product[]>(`${this.apiUrl}${username}catalog/`);
   }
   getProductsByName(searchTerm:string, username:string): Observable<Product[]>{
-    return this.http.get<Product[]>(`${this.apiUrl}${username}?name=${searchTerm}`);
+    return this.http.get<Product[]>(`${this.apiUrl}catalog/${username}?name=${searchTerm}`);
   }
   getProductsByCategory(category:string, username:string): Observable<Product[]>{
-    return this.http.get<Product[]>(`${this.apiUrl}${username}?category=${category}`);
+    return this.http.get<Product[]>(`${this.apiUrl}catalog/${username}?category=${category}`);
   }
 }

@@ -10,7 +10,7 @@ import { MessageDialogComponent } from '../components/message-dialog/message-dia
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:3000/';
+  private apiUrl = 'https://product-catalog-api-woad.vercel.app/' // 'http://localhost:3000/';
 
   constructor(
     private http: HttpClient,

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from "../header/header.component";
 import { CommonModule } from '@angular/common';
-import { RegisterComponent } from "../register/register.component";
+import { RegisterUserComponent } from "../register-user/register-user.component";
 import { LoginComponent } from '../login/login.component';
 
 @Component({
@@ -9,7 +9,7 @@ import { LoginComponent } from '../login/login.component';
     standalone: true,
     templateUrl: './homepage.component.html',
     styleUrl: './homepage.component.css',
-    imports: [HeaderComponent, CommonModule, RegisterComponent, LoginComponent]
+    imports: [HeaderComponent, CommonModule, RegisterUserComponent, LoginComponent]
 })
 export class HomepageComponent {
     private static login:boolean = true;

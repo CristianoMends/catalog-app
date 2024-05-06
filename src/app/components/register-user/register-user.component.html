@@ -20,7 +20,7 @@
       </span>
   
       <label for="email">E-mail:</label>
-      <input #email="ngModel" type="email" id="email" [(ngModel)]="user.email" name="email" required>
+      <input #email="ngModel" type="email" id="email" [(ngModel)]="user.email" name="email"  [email]="true" required>
       <span *ngIf="email.errors && (email.dirty || email.touched)" class="alert">
         Digite um email valido!
       </span>
@@ -40,4 +40,5 @@
       <button type="submit" [disabled]="registerForm.invalid">Enviar</button>
     </form>
   </div>
+  <app-message-dialog></app-message-dialog>
   

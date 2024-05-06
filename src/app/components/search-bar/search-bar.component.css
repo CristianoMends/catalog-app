@@ -20,7 +20,7 @@
   }
   
   .search-button {
-    background-color: var(--default-color-2);
+    background-color: var(--btn-color-1);
     color: #fff;
     padding: 10px;
     cursor: pointer;

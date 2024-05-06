@@ -31,7 +31,7 @@ span{
     justify-content: center;
     align-items: center;
     color: aliceblue;
-    background-color: var(--default-color-2);
+    background-color: var(--btn-color-1);
     border-radius: 50%;
     height: 50px;
     width: 50px;
@@ -61,7 +61,7 @@ button{
 button:hover{
     cursor: pointer;
     color: #fff;
-    background-color: var(--default-color-2);
+    background-color: var(--btn-color-1);
 }
 .loginOrRegister{
     margin: 25px 0;

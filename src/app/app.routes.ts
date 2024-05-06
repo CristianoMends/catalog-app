@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { MainComponent } from './components/catalog/main.component';
 import { HomepageComponent as MainComponentHome } from './components/homepage/homepage.component';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
 export const routes: Routes = [
@@ -17,7 +17,7 @@ export const routes: Routes = [
         component: LoginComponent
     },{
         path: 'register',
-        component: RegisterComponent
+        component: RegisterUserComponent
     },{
         path: 'profile',
         component: ProfileComponent

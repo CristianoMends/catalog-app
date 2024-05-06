@@ -1,28 +1,45 @@
-<app-header></app-header>
+<app-header>
+        <button class="logout" (click)="logout()">Sair</button>
+</app-header>
 <nav>
-    <button (click)="logout()">logout</button>
+    <button (click)="chooseManagement(1)">
+        Cadastrar item
+    </button>
+    <button (click)="chooseManagement(2)">
+        Deletar item
+    </button>
+    <button (click)="chooseManagement(3)">
+        Atualizar item
+    </button>
 </nav>
+
 <section class="store-info" *ngIf="profile">
-    <p>Endereço de Calogo: <span><a href="/catalog/{{profile.fullname}}">http://localhost:3000/{{profile.fullname.toLocaleLowerCase().replace(' ','_')}}</a></span></p>
-    <p>Loja: {{profile.fullname}}</p>
-    <p>Telefone: {{profile.phone}}</p>
-    <p>Endereço: {{profile.address}}</p>
-    <p>Produtos Cadastrados: </p>
-    <select [(ngModel)]="selectedProductId" (change)="onProductSelected()">
-        <option value="" selected disabled>Produtos</option>
-        <option *ngFor="let product of profile.products" [value]="product.product_id">
-            {{product.name.substring(0,15)+'...'}}
-        </option>
-    </select>
+    <a href="/catalog/{{profile.fullName.toLocaleLowerCase().replace(' ','_')}}">Meu Catálogo</a>
+    <p><strong>Loja:</strong> {{profile.fullName}}</p>
+    <p><strong>Telefone:</strong> {{formatPhone(profile.phone)}}</p>
+    <p><strong>Endereço:</strong> {{profile.address}}</p>
+
+    <div class="selectProducts-container" *ngIf="getChoosenManagement() == 2 || getChoosenManagement() == 3">
+        <h3>Selecione um produto: </h3>
+        <select id="selectProducts" name="selectProducts" [(ngModel)]="selectedProductId" (change)="onProductSelected()">
+            <option value="null" disabled selected>Produto</option>
+            <option *ngFor="let product of profile.products" [value]="product.product_id">
+                {{product.name.substring(0,25)+'...'}}
+            </option>
+        </select>
+    </div>
 </section>
-<section class="dialog">
-    <app-message-dialog></app-message-dialog>
-</section>
-<section class="product" *ngIf="selectedProduct">
-    <app-product [product]="selectedProduct"></app-product>
-    <div class="options">
-        <button>Editar</button>
-        <button (click)="deleteProduct(selectedProduct.product_id)">Deletar</button>
-    </div>    
+
+<section class="container">
+    <section class="product" *ngIf="selectedProduct && getChoosenManagement() == 2">
+        <app-product [product]="selectedProduct"></app-product>
+        <div class="options">
+            <button (click)="deleteProduct(selectedProduct.product_id)">Deletar</button>
+        </div>    
+    </section>
+    <app-register-product *ngIf="getChoosenManagement() == 1"></app-register-product>
+    <app-update-product *ngIf="selectedProduct && getChoosenManagement() == 3" [product]="selectedProduct"></app-update-product>
 </section>
 <app-preview></app-preview>
+<app-message-dialog></app-message-dialog>
+

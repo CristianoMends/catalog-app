@@ -8,6 +8,7 @@ import { PreviewComponent } from "../preview/preview.component";
 import { SearchBarComponent } from "../search-bar/search-bar.component";
 import { HeaderComponent } from '../header/header.component';
 import { ActivatedRoute } from '@angular/router';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-main',
@@ -35,11 +36,14 @@ export class MainComponent {
     });
 
     this.productService.getProducts(this.username).subscribe({
+
       next: (data: Product[]) => {
         this.products = data;
         this.products.forEach(p => {
-          if (!this.categories.includes(p.category)) {
-            this.categories.push(p.category.toLocaleUpperCase());
+          let c = p.category.toUpperCase();
+
+          if (!this.categories.includes(c)) {
+            this.categories.push(c);
           }
         })
       },
@@ -47,20 +51,19 @@ export class MainComponent {
     });
   }
   searchByName(searchTerm: string) {
-    console.log("Chamando searchByName com:", searchTerm);
+
     this.productService.getProductsByName(searchTerm, this.username).subscribe({
       next: (data: Product[]) => {
-        console.log("Produtos recebidos por nome:", data);  // Adicione este log
+        console.log("Produtos recebidos por nome:", data);
         this.products = data;
       },
       error: (err) => console.error(err)
     });
   }
   searchByCategory(category: string) {
-    console.log("Chamando searchByName com:", category);
+
     this.productService.getProductsByCategory(category, this.username).subscribe({
       next: (data: Product[]) => {
-        console.log("Produtos recebidos por categoria:", data);  // Adicione este log
         this.products = data;
       },
       error: (err) => console.error(err)
@@ -68,5 +71,21 @@ export class MainComponent {
   }
   isVisible(): string {
     return this.preview.isVisible() ? 'opacity' : '';
+  }
+  exportImage() {
+    const element = document.getElementById('catalog');
+    if(element)
+    html2canvas(element).then(canvas => {
+      const image = canvas.toDataURL('image/png');
+      this.shareOnWhatsApp();
+    });
+  }
+  
+  shareOnWhatsApp() {
+    const phoneNumber = '88999900549';
+    const message = 'teste';
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+    //window.open(whatsappUrl, '_blank');
+    window.location.href = whatsappUrl
   }
 }

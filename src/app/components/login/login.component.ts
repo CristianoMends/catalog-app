@@ -42,15 +42,11 @@ export class LoginComponent {
 
   onSubmit() {
     this.userService.getAuth(this.auth.email, this.auth.password).subscribe({
-      next: () => this.onSuccessLogin(),
+      next: () => this.isLoggedIn(),
       error: () => this.onFailedLogin()
     });
   }
-  onSuccessLogin() {
-    alert('Login bem succedido, redirecionando...')
-    window.location.href = 'profile';
-  }
   onFailedLogin() {
-    alert('Usuario não encontrado');
+    MessageDialogComponent.showMessage('Usuário não encontrado',`Verifique seu email e senha e tente novamente, ou crie sua conta!`,()=> {});
   }
 }

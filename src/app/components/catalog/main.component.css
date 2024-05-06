@@ -10,6 +10,7 @@ header{
     align-items: start;
     flex-direction: column;
     height: 150px;
+    display: block;
 }
 .product-container{
     position: relative;

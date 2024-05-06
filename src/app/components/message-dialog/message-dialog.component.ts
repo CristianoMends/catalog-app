@@ -7,11 +7,11 @@ import { LoaderComponent } from "../loader/loader.component";
 })
 
 @Component({
-    selector: 'app-message-dialog',
-    standalone: true,
-    templateUrl: './message-dialog.component.html',
-    styleUrl: './message-dialog.component.css',
-    imports: [CommonModule, LoaderComponent]
+  selector: 'app-message-dialog',
+  standalone: true,
+  templateUrl: './message-dialog.component.html',
+  styleUrl: './message-dialog.component.css',
+  imports: [CommonModule, LoaderComponent]
 })
 export class MessageDialogComponent {
 
@@ -20,21 +20,30 @@ export class MessageDialogComponent {
   private static message?: string;
   static onConfirm?: () => void;
   static onCancel?: () => void;
+  static onLoad?: () => void;
   private static options: number = 0;
 
-  hide() {
-    MessageDialogComponent.visible = false;
-  }
-  static showMessage(title: string, message?: string, onConfirm?: () => void, onCancel?: () => void) {
+  static showMessage(title: string, message?: string, onConfirm?: () => void, onCancel?: () => void, onLoad?: () => void) {
 
     MessageDialogComponent.title = title;
     MessageDialogComponent.message = message;
     MessageDialogComponent.onConfirm = onConfirm;
     MessageDialogComponent.onCancel = onCancel;
+    MessageDialogComponent.onLoad = onLoad;
 
     MessageDialogComponent.visible = true;
+    if (!onConfirm && !onCancel) {
+      setTimeout(() => {
+        MessageDialogComponent.runOnLoad();
+        MessageDialogComponent.visible = false;
+      }, 1500);
+    }
   }
-  hasLoad():boolean{
+
+  hide() {
+    MessageDialogComponent.visible = false;
+  }
+  hasLoad(): boolean {
     return !this.getConfirm() && !this.getCancel();
   }
   isVisible(): boolean {
@@ -52,7 +61,7 @@ export class MessageDialogComponent {
   getCancel() {
     return MessageDialogComponent.onCancel;
   }
-  getConfirm(){
+  getConfirm() {
     return MessageDialogComponent.onConfirm;
   }
   runConfirm() {
@@ -60,6 +69,11 @@ export class MessageDialogComponent {
       MessageDialogComponent.onConfirm();
     }
     this.hide();
+  }
+  static runOnLoad() {
+    if (MessageDialogComponent.onLoad) {
+      MessageDialogComponent.onLoad();
+    }
   }
 
   runCancel() {
