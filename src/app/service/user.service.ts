@@ -4,7 +4,6 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, catchError, tap } from 'rxjs';
 import { Profile } from '../interface/profile.interface';
 import { User } from '../interface/user.interface';
-import { MessageDialogComponent } from '../components/message-dialog/message-dialog.component';
 import { environment } from '../../environments/environment';
 
 
