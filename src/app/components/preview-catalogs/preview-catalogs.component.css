@@ -1,0 +1,38 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+}
+.transition{
+    display: flex;
+    gap: 10px;
+    width: 50%;
+    justify-content: center;
+    align-content: center;
+    border-left: 5px ridge;
+    border-right: 5px ridge;
+    overflow-x: scroll;
+}
+.preview-container{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+}
+.catalog{
+    width: max-content;
+    background-color: var(--btn-color-1);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: var(--shadow);
+}
+a:hover{
+    background-color: var(--default-color-3);
+}
+

@@ -1,6 +1,6 @@
 <header>
     <app-header>
-        <!--<button (click)="exportImage()">Compartilhar</button>-->
+        <button (click)="shareLink()"><img src="./assets/Digital_Glyph_Green.png" alt="icon whatsapp" width="15px"> Compartilhar</button>
     </app-header>
     <app-search-bar></app-search-bar>
 </header>
@@ -11,7 +11,8 @@
 <p class="qtd">Foram encontrados <strong>{{products.length}}</strong> produtos.</p>
 <app-preview></app-preview>
 <section id="product-container" class="product-container" [ngClass]="isVisible()">
-    <app-product *ngFor="let product of products" [product]="product"></app-product>
+    <app-product *ngFor="let product of products" [product]="product"><button (click)="contactSeller(product)" class="contactSeller"><img src="./assets/Digital_Glyph_Green.png" alt="" width="10px"> Falar com vendedor</button></app-product>
 </section>
 <app-footer></app-footer>
+<app-message-dialog></app-message-dialog>
   

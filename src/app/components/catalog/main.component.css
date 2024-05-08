@@ -23,6 +23,7 @@ header{
     min-height: 100vh;
     padding: 20px;
     background-color: #fff;
+    margin-bottom: 100px;
 }
 .nav-bar{
     position: relative;
@@ -41,19 +42,34 @@ header{
     text-align: center;
     margin: 15px;
 }
-.nav-bar input{
-    background-color: transparent;
+.opacity{
+    opacity: 0.5;
+}
+.contactSeller, button{
     border: none;
     color: #fff;
-    padding: 2px;
-    border-radius: 5%;
+    background-color: var(--btn-color-1);
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.nav-bar input{
+    border: none;
+    color: #fff;
+    background-color: transparent;
 }
 .nav-bar input:hover{
     cursor: pointer;
-    background-color: var(--default-color-2);
+    background-color: var(--btn-color-1);
 }
-.opacity{
-    opacity: 0.5;
+.contactSeller, button:hover{
+    cursor: pointer;
+    background-color: var(--default-color-3);
 }
 @media (max-width: 599px) {
     * {

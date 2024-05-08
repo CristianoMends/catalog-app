@@ -44,8 +44,11 @@ span{
     font-size: x-large;
 }
 
-.loginOrRegister {
+.form {
+    height: 100vh;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
 }
 
@@ -63,12 +66,25 @@ button:hover{
     color: #fff;
     background-color: var(--btn-color-1);
 }
-.loginOrRegister{
+.form{
     margin: 25px 0;
 }
-.loginOrRegister div{
+.form div{
     opacity: 0;
     animation: fadein 0.5s linear forwards;
+}
+nav a{
+    color: #fff;
+    background-color: var(--btn-color-1);
+    padding: 5px;
+    border: none;
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+    margin: 0 5px;
+}
+nav a:hover{
+    cursor: pointer;
+    background-color: var(--default-color-3);
 }
 @keyframes fadein {
     0%{
@@ -80,7 +96,4 @@ button:hover{
         visibility: visible;
         width: 100%;
     }
-}
-html{
-    scroll-behavior: smooth;
 }

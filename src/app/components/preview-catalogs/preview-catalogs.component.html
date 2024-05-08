@@ -1,0 +1,10 @@
+<div class="container" *ngIf="catalogs">
+    <h2>Conheça catálogos de nossos usuários</h2>
+    <div class="transition">
+        <section class="preview-container">
+            <a [href]="c.link" class="catalog" *ngFor="let c of catalogs">
+                <p>{{c.name}}</p>
+            </a>
+        </section>
+    </div>
+</div>

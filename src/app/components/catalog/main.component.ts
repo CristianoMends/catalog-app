@@ -9,6 +9,9 @@ import { SearchBarComponent } from "../search-bar/search-bar.component";
 import { HeaderComponent } from '../header/header.component';
 import { ActivatedRoute } from '@angular/router';
 import html2canvas from 'html2canvas';
+import { UserService } from '../../service/user.service';
+import { UserView } from '../../interface/user-view.interface';
+import { MessageDialogComponent } from "../message-dialog/message-dialog.component";
 
 @Component({
   selector: 'app-main',
@@ -16,16 +19,18 @@ import html2canvas from 'html2canvas';
   templateUrl: './main.component.html',
   styleUrl: './main.component.css',
   providers: [CatalogService],
-  imports: [HeaderComponent, ProductComponent, CommonModule, FooterComponent, PreviewComponent, SearchBarComponent]
+  imports: [HeaderComponent, ProductComponent, CommonModule, FooterComponent, PreviewComponent, SearchBarComponent, MessageDialogComponent]
 })
 export class MainComponent {
   products: Product[] = [];
   categories: string[] = [];
   productPreView!: Product;
   username!: string;
+  user!: UserView;
 
   constructor(
     private route: ActivatedRoute,
+    private userService: UserService,
     private productService: CatalogService,
     private preview: PreviewComponent
   ) { }
@@ -39,6 +44,8 @@ export class MainComponent {
 
       next: (data: Product[]) => {
         this.products = data;
+        this.getUser(this.products[0]);
+
         this.products.forEach(p => {
           let c = p.category.toUpperCase();
 
@@ -72,20 +79,30 @@ export class MainComponent {
   isVisible(): string {
     return this.preview.isVisible() ? 'opacity' : '';
   }
-  exportImage() {
-    const element = document.getElementById('catalog');
-    if(element)
-    html2canvas(element).then(canvas => {
-      const image = canvas.toDataURL('image/png');
-      this.shareOnWhatsApp();
-    });
+  shareLink() {
+    this.sendMessage('',`Olá, dê uma olhada nesse link: ${window.location.href}`);
   }
-  
-  shareOnWhatsApp() {
-    const phoneNumber = '88999900549';
-    const message = 'teste';
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
-    //window.open(whatsappUrl, '_blank');
-    window.location.href = whatsappUrl
+
+  sendMessage(phone: string, message: string) {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    var whatsappUrl =
+      isMobile ?
+        `whatsapp://send?phone=${phone}&text=${encodeURIComponent(message)}` :
+        `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  }
+
+  contactSeller(product: Product) {
+    if (!this.user) {
+      return;
+    }
+    console.log(`send message to ${this.user.phone} about product with id ${product.product_id}`);
+    this.sendMessage(this.user.phone, `Olá, gostaria de mais informações sobre o produto: ${product.name}\n${product.image}`);
+  }
+  getUser(product: Product) {
+    this.userService.getUserById(product.product_id).subscribe({
+      next: (user: UserView) => { this.user = user },
+      error: (err) => { console.error(err) }
+    })
   }
 }

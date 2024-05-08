@@ -1,4 +1,4 @@
-.register{
+.register {
     height: max-content;
     width: 100%;
     display: flex;
@@ -6,6 +6,7 @@
     justify-content: center;
     align-items: center;
 }
+
 form {
     margin: auto;
     padding: 20px;
@@ -18,19 +19,21 @@ form {
     text-align: start;
     flex-direction: column;
 }
+
 label {
     display: block;
     margin-top: 10px;
 }
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="tel"] {
     width: 100%;
     padding: 8px;
-    margin-top: 5px;
 }
-button {
+
+button:not(.passwordContainer *) {
     padding: 10px;
     background-color: var(--btn-color-1);
     color: white;
@@ -40,13 +43,31 @@ button {
     cursor: pointer;
     margin: 0 25%;
 }
+
 button:hover {
     background-color: var(--default-color-1);
 }
+
 .alert {
     color: red;
-  }
-  
-  input.ng-invalid.ng-touched {
+}
+
+input.ng-invalid.ng-touched {
     border-color: red;
-  }
+}
+.passwordContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.passwordContainer button{
+    transform: translateX(-10px);
+    width: max-content;
+    padding: 10px;
+    background-color: var(--btn-color-1);
+    color: white;
+    border: none;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+}

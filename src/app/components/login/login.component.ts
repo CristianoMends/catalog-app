@@ -31,6 +31,7 @@ export class LoginComponent {
   }
 
   isLoggedIn(){
+    this.userService.validateToken()
     const token = this.userService.getToken();
     if (token != null) { 
       MessageDialogComponent.showMessage('Bem vindo de volta!',`Redirecionando para seu perfil`);

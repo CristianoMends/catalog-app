@@ -1,16 +1,18 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, tap } from 'rxjs';
 import { Profile } from '../interface/profile.interface';
 import { User } from '../interface/user.interface';
 import { MessageDialogComponent } from '../components/message-dialog/message-dialog.component';
+import { environment } from '../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'https://product-catalog-api-woad.vercel.app/' // 'http://localhost:3000/';
+  private apiUrl = environment.API_URL;// 'https://product-catalog-api-woad.vercel.app/' // 'http://localhost:3000/';
 
   constructor(
     private http: HttpClient,
@@ -33,6 +35,11 @@ export class UserService {
       })
     );
   }
+
+  getUserById(product_id: number) {
+    return this.http.get<any>(`${this.apiUrl}catalog/user/${product_id}`)
+  }
+
   getProfile(): Observable<Profile> {
     const token = this.getToken();
 
@@ -54,9 +61,28 @@ export class UserService {
     return null;
   }
 
+  validateToken(){
+    const token = this.getToken();
+    if(!token){
+      return;
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    this.http.get(`${this.apiUrl}auth`,{ headers }).subscribe({
+      next:()=>{
+        console.log('token is ok');
+      },
+      error:(err:HttpErrorResponse)=>{
+        this.clearToken();
+        console.error(err);
+      }
+    });
+  }
+
   storeToken(token: string): void {
     if (isPlatformBrowser(this.platformId)) {
-      this.setExpireTime();
       localStorage.setItem('access_token', token);
     }
   }
@@ -64,14 +90,8 @@ export class UserService {
   clearToken(): void {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.removeItem('access_token');
+      console.log('localstorange is cleaned');
     }
   }
-  async setExpireTime() {
-    setTimeout(() => {
-      MessageDialogComponent.showMessage('acesso expirado');
-      this.clearToken();
-      window.location.href = '/';    
-    }, 6000);
 
-  }
 }

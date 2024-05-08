@@ -1,4 +1,9 @@
-<app-header></app-header>
+<app-header>
+<nav>
+    <a href="#form" (click)="setLogin(true)">Login</a>
+    <a href="#form" (click)="setLogin(false)">Cadastro</a>
+</nav>
+</app-header>
 <main class="main-container">
     <h1>AUMENTE A EXPOSIÇÃO DE SEUS PRODUTOS</h1>
     <p>
@@ -7,17 +12,19 @@
     </p>
     <div class="steps">
         <label for="step">Crie sua conta <span class="arrow">&RightArrow;</span> </label>
-        <a href="#" class="step" (click)="setLogin(false)">1</a>
+        <a href="#form" class="step" (click)="setLogin(true)">1</a>
         <label for="step">Faça o login <span class="arrow">&RightArrow;</span></label>
-        <a href="#" class="step" (click)="setLogin(true)">2</a>
+        <a href="#form" class="step" (click)="setLogin(false)">2</a>
         <label for="step">Cadastre produtos <span class="arrow">&RightArrow;</span></label>
         <a href="#" class="step">3</a>
         <label for="step">Compartilhe seu catálogo<span class="arrow">&RightArrow;</span></label>
         <a href="#" class="step">4</a>
     </div>
-
 </main>
-<div id="loginOrRegister" class="loginOrRegister">
+<div class="extra-content">
+    <app-preview-catalogs></app-preview-catalogs>
+</div>
+<div id="form" class="form">
     <div *ngIf="!isLogin()">
         <span>Já tem conta? <button (click)="loginToRegister()">Fazer login</button></span>
         <app-register class="register"></app-register>
@@ -27,4 +34,5 @@
         <app-login class="login"></app-login>
     </div>
 </div>
+<app-footer></app-footer>
 

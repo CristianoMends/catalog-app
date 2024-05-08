@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Product } from '../interface/product.interface';
 import { UserService } from './user.service';
 import { CreateProduct } from '../interface/create-product.interface';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'https://product-catalog-api-woad.vercel.app/'// 'http://localhost:3000/';
+  private apiUrl = environment.API_URL; // 'https://product-catalog-api-woad.vercel.app/'// 'http://localhost:3000/';
   constructor(
     private http: HttpClient,
     private userService:UserService
