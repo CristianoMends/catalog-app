@@ -45,19 +45,6 @@ header{
 .opacity{
     opacity: 0.5;
 }
-.contactSeller, button{
-    border: none;
-    color: #fff;
-    background-color: var(--btn-color-1);
-    padding: 5px;
-    border-radius: 5px;
-    margin-bottom: 5px;
-    box-shadow: var(--shadow);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-}
 .nav-bar input{
     border: none;
     color: #fff;
@@ -71,9 +58,23 @@ header{
     cursor: pointer;
     background-color: var(--default-color-3);
 }
+.contactSeller, button{
+    border: none;
+    color: #fff;
+    background-color: var(--btn-color-1);
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
 @media (max-width: 599px) {
     * {
         font-size: xx-small;
+        text-align: start;
     }
     .nav-bar{
         width: 100%;

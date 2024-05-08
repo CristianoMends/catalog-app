@@ -23,3 +23,13 @@ a{
 img{
     z-index: 1;
 }
+
+@media (max-width: 599px) {
+    a{
+        font-size: small;
+    }
+    img{
+        height: 50px;
+        width: 50px;
+    }
+}

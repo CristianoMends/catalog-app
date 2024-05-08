@@ -1,4 +1,4 @@
-nav{
+nav {
     height: 50px;
     background-color: var(--default-color-3);
     display: flex;
@@ -6,25 +6,30 @@ nav{
     justify-content: center;
     gap: 15px;
 }
-nav a{
+
+nav a {
     color: #fff;
     text-decoration: none;
 }
-nav a:hover{
+
+nav a:hover {
     color: var(--btn-color-1);
 }
-.product{
+
+.product {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-.options{
+
+.options {
     margin-top: 30px;
     display: flex;
     gap: 10px;
 }
-button{
+
+button {
     padding: 5px;
     border: none;
     box-shadow: var(--shadow);
@@ -33,17 +38,26 @@ button{
     color: #fff;
     width: max-content
 }
-button:hover{
+
+button:hover {
     background-color: var(--default-color-3);
     cursor: pointer;
 }
-.store-info{
+
+.store-info {
     padding: 15px;
 }
-.selectProducts-container{
+
+.selectProducts-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 10px;
+}
+
+@media (max-width: 599px) {
+    .store-info, *{
+        text-align: start;
+    }
 }

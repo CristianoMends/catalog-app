@@ -55,12 +55,14 @@ button:hover {
 input.ng-invalid.ng-touched {
     border-color: red;
 }
-.passwordContainer{
+
+.passwordContainer {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.passwordContainer button{
+
+.passwordContainer button {
     transform: translateX(-10px);
     width: max-content;
     padding: 10px;
@@ -70,4 +72,15 @@ input.ng-invalid.ng-touched {
     box-shadow: var(--shadow);
     cursor: pointer;
     border-radius: 0 5px 5px 0;
+}
+
+@media (max-width: 599px) {
+    .register {}
+
+    form label {}
+
+    form {
+        align-items: start;
+        width: 90%;
+    }
 }

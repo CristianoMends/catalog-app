@@ -97,3 +97,84 @@ nav a:hover{
         width: 100%;
     }
 }
+
+@media (max-width: 599px ) {
+    main {
+        margin-top: 15px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+        padding: 15px 0;
+        width: 100%;        
+    }
+    *{
+        font-size: small;
+        text-align: center;
+    }
+    
+    .steps {
+        display: grid;
+        grid-row: 2;
+        grid-column: 4;
+        justify-content: center;
+        align-items: center;
+        font-size: small;
+        grid-template-columns: max-content max-content max-content max-content;
+        grid-template-rows: max-content max-content;
+    }
+    
+    .step {
+        height: 25px;
+        width: 25px;
+    }
+    .step:hover{
+        background-color: var(--default-color-3);
+    }
+    .steps label{
+        height: 50%;
+        text-align: center;
+    }
+    .arrow {
+        font-size: medium;
+    }
+    
+    .form {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    div {
+        text-align: center;
+    }
+    button{
+        border: none;
+        padding: 5px;
+        border-radius: 5px;
+        text-decoration: underline;
+    }
+    button:hover{
+        cursor: pointer;
+        color: #fff;
+        background-color: var(--btn-color-1);
+    }
+    .form{
+        margin: 25px 0;
+    }
+    .form div{
+        opacity: 0;
+        animation: fadein 0.5s linear forwards;
+    }
+    nav a{
+        color: #fff;
+        background-color: var(--btn-color-1);
+        padding: 5px;
+        border: none;
+        box-shadow: var(--shadow);
+        border-radius: 5px;
+        margin: 0 5px;
+    }
+}

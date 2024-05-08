@@ -36,6 +36,6 @@
   }
   @media (max-width: 599px) {
     .search-container{
-      width: 200px;
+      transform: scaley(80%);
     }
 }

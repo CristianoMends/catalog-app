@@ -92,3 +92,12 @@ a:hover {
     color: var(--btn-color-1);
   }
 }
+@media (max-width: 599px) {
+  .container{
+    transform: scale(95%);
+    flex-direction: column;
+  }
+  .footer{
+    flex-direction: column;
+  }
+  }

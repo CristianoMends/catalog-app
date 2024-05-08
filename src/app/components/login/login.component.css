@@ -43,3 +43,15 @@ button {
 button:hover {
   background-color: var(--default-color-1);
 }
+
+@media (max-width: 599px) {
+.container{
+}
+form label{
+  
+  transform: translateX(-100px);
+}
+form{
+  width: 90%;
+}
+}
