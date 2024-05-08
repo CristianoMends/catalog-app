@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = environment.API_URL;// 'https://product-catalog-api-woad.vercel.app/' // 'http://localhost:3000/';
+  private apiUrl = environment.API_URL;
 
   constructor(
     private http: HttpClient,
