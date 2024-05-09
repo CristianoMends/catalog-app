@@ -23,6 +23,7 @@ export class UpdateProductComponent {
     name: '',
     category: '',
     description: '',
+    installment:1,
     price: 0
   };
     @Input() product!: Product;
@@ -44,9 +45,10 @@ export class UpdateProductComponent {
 
   onSubmit(form: NgForm) {
     if (form.valid) {
+
       MessageDialogComponent.showMessage('Atualizar produto', 'Isso irá atualizar os dados desse produto!',
         async () => {
-          await this.productService.update(this.product.product_id, this.createProduct).subscribe({
+          await this.productService.update(this.product.product_id, this.product).subscribe({
             next: () => { console.log('product registered successfully') },
             error: (err) => { console.error(err) }
           });
@@ -67,7 +69,7 @@ export class UpdateProductComponent {
     let fileList: FileList | null = element.files;
     if (fileList) {
       console.log('Arquivo selecionado:', fileList[0]);
-      this.createProduct.image = fileList[0];  // Salvando o arquivo no objeto produto
+      this.createProduct.file = fileList[0];  // Salvando o arquivo no objeto produto
     }
   }
 }

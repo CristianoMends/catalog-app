@@ -34,7 +34,7 @@
 .footer button {
   margin-top: 10px;
   padding: 10px 20px;
-  background-color: var(--btn-color-1);
+  background-color: var(--btn-color-2);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -75,7 +75,7 @@ a {
 }
 
 a:hover {
-  background-color: var(--btn-color-1);
+  background-color: var(--btn-color-2);
 }
 
 .dev-section a{
@@ -89,7 +89,7 @@ a:hover {
 @keyframes turnColor {
  
   100% {
-    color: var(--btn-color-1);
+    color: var(--btn-color-2);
   }
 }
 @media (max-width: 599px) {

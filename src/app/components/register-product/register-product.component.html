@@ -28,11 +28,17 @@
       <span *ngIf="price.invalid && (price.dirty || price.touched)" class="alert">
         Insira um valor válido (maior ou igual a zero).
       </span>
+
+      <label for="installment">Parcelamento:</label>
+      <input #installment="ngModel" type="number" id="installment" [(ngModel)]="product.installment" name="installment" required min="1" max="12" placeholder="12x">
+      <span *ngIf="installment.invalid && (installment.dirty || installment.touched)" class="alert">
+        Escolha um valor entre 1 e 12!
+      </span>
   
       <label for="image">Imagem:</label>
       <input type="file" id="image" (change)="onFileSelected($event)" accept="image/png, image/jpeg, image/jpg">
   
-      <button type="submit" [disabled]="registerForm.invalid">Salvar</button>
+      <button class="submit" type="submit" [disabled]="registerForm.invalid">Salvar</button>
     </form>
   </div>
   

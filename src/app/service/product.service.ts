@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = environment.API_URL; // 'https://product-catalog-api-woad.vercel.app/'// 'http://localhost:3000/';
+  private apiUrl = environment.API_URL;
   constructor(
     private http: HttpClient,
     private userService:UserService
@@ -27,13 +27,36 @@ export class ProductService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.post<Product>(`${this.apiUrl}product`, product, { headers })
+
+    const formData: FormData = new FormData();
+    formData.append('name', product.name);
+    formData.append('category', product.category);
+    formData.append('description', product.description);
+    formData.append('installment', product.installment!.toString());
+    formData.append('price', product.price!.toString());
+    
+    if (product.file) {
+      formData.append('file', product.file, product.file.name);
+    }
+
+    return this.http.post<Product>(`${this.apiUrl}product`, formData, { headers })
   }
   update(product_id:number, product:CreateProduct){
     const token = this.userService.getToken();
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.put<Product>(`${this.apiUrl}product?id=${product_id}`, product, { headers })
+
+    const formData: FormData = new FormData();
+    formData.append('name', product.name);
+    formData.append('category', product.category);
+    formData.append('description', product.description);
+    formData.append('price', product.price!.toString());
+    
+    if (product.file) {
+      formData.append('file', product.file, product.file.name);
+    }
+
+    return this.http.put<Product>(`${this.apiUrl}product/id=${product_id}`, formData, { headers })
   }
 }

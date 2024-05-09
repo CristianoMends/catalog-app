@@ -5,7 +5,7 @@ header{
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: var(--default-color-1);
+    background-image: var(--background);
 }
 a{
     padding: 10px;

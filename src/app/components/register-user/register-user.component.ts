@@ -5,6 +5,7 @@ import { User } from '../../interface/user.interface';
 import { UserService } from '../../service/user.service';
 import { MessageDialogComponent } from '../message-dialog/message-dialog.component';
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
+import { LoadingScreenComponent } from '../loading-screen/loading-screen.component';
 
 @Component({
   selector: 'app-register',
@@ -24,7 +25,6 @@ export class RegisterUserComponent {
     email: '',
     password: '',
   };
-  confirmPassword: string = 'meu ovo';
   hidePassword = true;
   hideConfirmPassword = true;
 
@@ -32,14 +32,17 @@ export class RegisterUserComponent {
 
   onSubmit() {
     if (this.registerForm.valid) {
+      LoadingScreenComponent.setVisible()
       const res = this.userService.save(this.user);
       res.subscribe({
         next: (res) => {
+          LoadingScreenComponent.setInvisible()
           MessageDialogComponent.showMessage('Usuário registrado com sucesso!', 'Você será redirecionado para a página de login.', undefined, undefined,
             () => { window.location.href = '/'; }
           );
         },
         error: (err: HttpErrorResponse) => {
+          LoadingScreenComponent.setInvisible()
           MessageDialogComponent.showMessage('Erro ao salvar usuário!', `${err.error.message}`);
           console.error(err);
         }

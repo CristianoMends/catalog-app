@@ -49,7 +49,7 @@
 
 .preview-content{
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     opacity: 1;
     flex-direction: row;
@@ -60,6 +60,7 @@
     height: 400px;
     transition: opacity 0.1s ease-in-out;
     box-shadow: var(--shadow);
+    overflow: hidden;
 }
 .preview-content img{
     height: 100%;
@@ -79,8 +80,8 @@
     height: 100%;
     padding: 10px;
     overflow-y: auto;
-
 }
+
 @media (max-width: 599px) {
     .preview-content{
         margin: 0 10px;

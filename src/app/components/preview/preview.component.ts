@@ -27,7 +27,6 @@ export class PreviewComponent {
   }
   toggleVisibility() {
     PreviewComponent.visible = !PreviewComponent.visible
-    console.log('visible: ' + PreviewComponent.visible)
   }
    showOrHide():string {
 

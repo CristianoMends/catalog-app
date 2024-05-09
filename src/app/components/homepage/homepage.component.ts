@@ -14,15 +14,21 @@ import { PreviewCatalogsComponent } from "../preview-catalogs/preview-catalogs.c
     imports: [HeaderComponent, CommonModule, RegisterUserComponent, LoginComponent, FooterComponent, PreviewCatalogsComponent]
 })
 export class HomepageComponent {
-    private static login:boolean = true;
+    private static loginVisible:boolean = false;
+    private static registerVisible:boolean = false;
     
-    loginToRegister(){
-        HomepageComponent.login = !HomepageComponent.login;
+    showLogin(){
+        HomepageComponent.registerVisible = false;
+        HomepageComponent.loginVisible = true;
     }
-    setLogin(login:boolean){
-      HomepageComponent.login = login;
+    showRegister(){
+        HomepageComponent.loginVisible = false;
+        HomepageComponent.registerVisible = true;
     }
-    isLogin(){
-        return HomepageComponent.login;
+    isLoginVisible(){
+        return HomepageComponent.loginVisible;
+    }
+    isRegisterVisible(){
+        return HomepageComponent.registerVisible;
     }
 }

@@ -14,7 +14,6 @@ header{
 }
 .product-container{
     position: relative;
-    top: 10px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -22,8 +21,8 @@ header{
     align-items: start;
     min-height: 100vh;
     padding: 20px;
-    background-color: #fff;
-    margin-bottom: 100px;
+    padding-bottom: 100px;
+    background-color: rgba(255, 255, 230, 0.904);
 }
 .nav-bar{
     position: relative;
@@ -40,7 +39,11 @@ header{
 }
 .qtd{
     text-align: center;
-    margin: 15px;
+    padding: 15px;
+    background-color: #fff;
+    color: black;
+    text-shadow: none;
+    background-color: rgba(255, 255, 230, 0.904);
 }
 .opacity{
     opacity: 0.5;

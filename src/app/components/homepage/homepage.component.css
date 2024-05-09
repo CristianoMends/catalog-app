@@ -6,6 +6,7 @@ main {
     flex-direction: column;
     padding: 15px 0;
     width: 100%;
+
 }
 
 a {
@@ -16,14 +17,12 @@ span{
 }
 
 .steps {
-    margin: 25px 0;
     width: 100%;
     height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    
 }
 
 .step {

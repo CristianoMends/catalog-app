@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CatalogService } from '../../service/catalog.service';
 import { PreviewCatalog } from '../../interface/preview-catalog';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-preview-catalogs',
@@ -27,5 +28,8 @@ export class PreviewCatalogsComponent {
           console.log(err);
         }
       })
+    }
+    getHost(){
+      return environment.HOST
     }
 }

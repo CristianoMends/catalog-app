@@ -2,7 +2,7 @@
     <h2>Conheça catálogos de nossos usuários</h2>
     <div class="transition">
         <section class="preview-container">
-            <a [href]="c.link" class="catalog" *ngFor="let c of catalogs">
+            <a [href]="getHost()+c.link" class="catalog" *ngFor="let c of catalogs">
                 <p>{{c.name}}</p>
             </a>
         </section>

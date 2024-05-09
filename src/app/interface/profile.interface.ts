@@ -12,6 +12,7 @@ export interface Profile {
         price: number,
         category: string,
         image: string,
+        installment:number,
         userId: string
     }]
 }

@@ -30,19 +30,23 @@
     <div class="passwordContainer">
       <input #password="ngModel" [type]="hidePassword ? 'password' : 'text'" id="password" [(ngModel)]="user.password"
         name="password" required minlength="6">
-      <button type="button" (click)="toggleVisibility('password')">Mostrar</button>
+      <button type="button" (click)="toggleVisibility('password')">
+        <img [src]="hidePassword?'./assets/show.png':'./assets/hide.png' " alt="" width="13px">
+      </button>
     </div>
     <span *ngIf="password.errors && (password.dirty || password.touched)" class="alert">
       Digite uma senha valida!
     </span>
 
-    <label for="confirmPassword">Confirme sua senha:</label>
+    <label for="confirm">Confirme sua senha:</label>
     <div class="passwordContainer">
-      <input #confirmPassword="ngModel" [type]="hideConfirmPassword ? 'password' : 'text'" id="confirmPassword"
-        [(ngModel)]="confirmPassword" name="confirmPassword" required minlength="6">
-      <button type="button" (click)="toggleVisibility('confirm')">Mostrar</button>
+      <input #confirm="ngModel" [type]="hideConfirmPassword ? 'password' : 'text'" id="confirm"
+        ngModel name="confirm" required minlength="6">
+      <button type="button" (click)="toggleVisibility('confirm')">
+        <img [src]="hideConfirmPassword?'./assets/show.png':'./assets/hide.png' " alt="" width="13px">
+      </button>
     </div>
-    <span *ngIf="(password.value !== confirmPassword.value) && (confirmPassword.dirty || confirmPassword.touched)"
+    <span *ngIf="(password.value !== confirm.value) && (confirm.dirty || confirm.touched)"
       class="alert">
       A senha não corresponde!
     </span>

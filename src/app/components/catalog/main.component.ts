@@ -12,14 +12,15 @@ import html2canvas from 'html2canvas';
 import { UserService } from '../../service/user.service';
 import { UserView } from '../../interface/user-view.interface';
 import { MessageDialogComponent } from "../message-dialog/message-dialog.component";
+import { LoadingScreenComponent } from "../loading-screen/loading-screen.component";
 
 @Component({
-  selector: 'app-main',
-  standalone: true,
-  templateUrl: './main.component.html',
-  styleUrl: './main.component.css',
-  providers: [CatalogService],
-  imports: [HeaderComponent, ProductComponent, CommonModule, FooterComponent, PreviewComponent, SearchBarComponent, MessageDialogComponent]
+    selector: 'app-main',
+    standalone: true,
+    templateUrl: './main.component.html',
+    styleUrl: './main.component.css',
+    providers: [CatalogService],
+    imports: [HeaderComponent, ProductComponent, CommonModule, FooterComponent, PreviewComponent, SearchBarComponent, MessageDialogComponent, LoadingScreenComponent]
 })
 export class MainComponent {
   products: Product[] = [];
@@ -40,8 +41,8 @@ export class MainComponent {
       this.username = params.get('username') || '';
     });
 
+    LoadingScreenComponent.setVisible()
     this.productService.getProducts(this.username).subscribe({
-
       next: (data: Product[]) => {
         this.products = data;
         this.getUser(this.products[0]);
@@ -52,35 +53,49 @@ export class MainComponent {
           if (!this.categories.includes(c)) {
             this.categories.push(c);
           }
+          LoadingScreenComponent.setInvisible()
         })
       },
-      error: (err) => console.error(err)
-    });
+      error: (err) => {
+        console.error(err)
+        LoadingScreenComponent.setInvisible()
+      }
+    }
+  );
+  LoadingScreenComponent.setInvisible();
+
   }
   searchByName(searchTerm: string) {
-
+    LoadingScreenComponent.setVisible()
     this.productService.getProductsByName(searchTerm, this.username).subscribe({
       next: (data: Product[]) => {
         console.log("Produtos recebidos por nome:", data);
         this.products = data;
+        LoadingScreenComponent.setInvisible()
       },
-      error: (err) => console.error(err)
+      error: (err) => {
+        LoadingScreenComponent.setInvisible()
+        console.error(err)}
     });
   }
   searchByCategory(category: string) {
-
+    LoadingScreenComponent.setVisible()
     this.productService.getProductsByCategory(category, this.username).subscribe({
       next: (data: Product[]) => {
         this.products = data;
+        LoadingScreenComponent.setInvisible()
       },
-      error: (err) => console.error(err)
+      error: (err) => {
+        console.error(err)
+        LoadingScreenComponent.setInvisible()
+      }
     });
   }
   isVisible(): string {
     return this.preview.isVisible() ? 'opacity' : '';
   }
   shareLink() {
-    this.sendMessage('',`Olá, dê uma olhada nesse link: ${window.location.href}`);
+    this.sendMessage('',`Olá! Confira o catálogo de produtos de ${this.user.fullName} nesse link: ${window.location.href}`);
   }
 
   sendMessage(phone: string, message: string) {
