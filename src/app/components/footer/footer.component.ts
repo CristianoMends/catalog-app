@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { MessageDialogComponent } from "../message-dialog/message-dialog.component";
 import { HttpClient } from '@angular/common/http';
@@ -12,15 +12,14 @@ import { HttpClient } from '@angular/common/http';
   imports: [CommonModule, FormsModule, MessageDialogComponent]
 })
 export class FooterComponent {
-  userEmail = '';
-  userMessage = '';
 
-  constructor(private http: HttpClient) { }
+  @Input() message:string = '';
 
-  sendEmail(form: NgForm) {
-    if (form.valid) {
-      form.ngSubmit
-      form.reset();
-    }
+  sendEmail(message: string): void {
+    const subject = encodeURIComponent('Interesse no Portfólio');
+    const emailBody = encodeURIComponent(message)
+    window.open(`mailto:mendescristiano012@gmail.com?subject=${subject}&body=${emailBody}`, '_blank')
   }
+
+
 }

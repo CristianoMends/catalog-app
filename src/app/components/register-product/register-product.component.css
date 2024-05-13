@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 15px;
 }
 
 form {
@@ -12,7 +13,7 @@ form {
     padding: 20px;
     border: 1px solid #ccc;
     box-shadow: var(--shadow);
-    gap: 5px;
+    gap: 1px;
     width: 35%;
     display: flex;
     border-radius: 5px;
@@ -75,5 +76,17 @@ textarea {
     border-radius: 4px; 
     resize: vertical; 
     box-sizing: border-box; 
+}
+
+*:not(button){
+    text-align: start;
+}
+
+@media (max-width: 600px) {
+    form{
+        width: 90%;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
 }
 

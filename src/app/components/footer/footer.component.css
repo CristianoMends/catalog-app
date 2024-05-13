@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: start;
   align-items: start;
-  background-color: var(--default-color-1);
+  background-color: var(--blue);
   color: #fff;
   filter: brightness(0.8)
 }
@@ -80,17 +80,6 @@ a:hover {
 
 .dev-section a{
   color: white;
-  animation: turnColor 1s linear infinite alternate;
-}
-.dev-section a:hover{
-  animation: none;
-}
-
-@keyframes turnColor {
- 
-  100% {
-    color: var(--btn-color-2);
-  }
 }
 @media (max-width: 599px) {
   .container{

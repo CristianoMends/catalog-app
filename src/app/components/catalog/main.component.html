@@ -8,11 +8,13 @@
     <input type="button" value="TODOS" (click)="searchByCategory('')">
     <input type="button" *ngFor="let categorie of categories" value="{{ categorie }}" (click)="searchByCategory(categorie.toLocaleLowerCase())">
 </nav>
-<p class="qtd">Produtos encontrados: <strong>{{products.length}}</strong></p>
-<app-preview></app-preview>
-<section id="product-container" class="product-container" [ngClass]="isVisible()">
-    <app-product *ngFor="let product of products" [product]="product"><button (click)="contactSeller(product)" class="contactSeller"><img src="./assets/Digital_Glyph_Green.png" alt="" width="10px"> Contatar vendedor</button></app-product>
-</section>
+<div class="container">
+    <p class="qtd">Produtos encontrados: <strong>{{products.length}}</strong></p>
+    <app-preview></app-preview>
+    <section id="product-container" class="product-container" [ngClass]="isVisible()">
+        <app-product *ngFor="let product of products" [product]="product"><button (click)="contactSeller(product)" class="contactSeller"><img src="./assets/Digital_Glyph_Green.png" alt="" width="10px"> Contatar vendedor</button></app-product>
+    </section>    
+</div>
 <app-footer></app-footer>
 <app-message-dialog></app-message-dialog>
   

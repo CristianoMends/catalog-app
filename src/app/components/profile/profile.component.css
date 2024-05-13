@@ -55,7 +55,12 @@ button:hover {
     flex-direction: column;
     padding: 10px;
 }
-
+.container-main{
+    color: black;
+    text-shadow: none;
+    background-color: #fff;
+    height: 100%;
+}
 @media (max-width: 599px) {
     .store-info, *{
         text-align: start;

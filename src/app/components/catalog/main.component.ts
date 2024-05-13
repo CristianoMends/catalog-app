@@ -112,7 +112,7 @@ export class MainComponent {
       return;
     }
     console.log(`send message to ${this.user.phone} about product with id ${product.product_id}`);
-    this.sendMessage(this.user.phone, `Olá, gostaria de mais informações sobre o produto: ${product.name}\n${product.image}`);
+    this.sendMessage('55'+this.user.phone, `Olá, gostaria de mais informações sobre o produto: ${product.name}\n${product.image}`);
   }
   getUser(product: Product) {
     this.userService.getUserById(product.product_id).subscribe({

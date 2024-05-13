@@ -81,10 +81,9 @@
     }
     .product-image{
         height: 100px;
-        width: 100px;
     }
     .product-name{
-        padding-bottom: 2px;
+        padding-bottom: 20px;
     }
     .preview-button{
         top: -100px;

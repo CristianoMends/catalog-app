@@ -2,11 +2,9 @@
     <div class="container">
         <div class="form">
             <h4>Envie uma Mensagem</h4>
-            <form (ngSubmit)="sendEmail(form)" #form="ngForm">
-                <input type="email" id="email" [(ngModel)]="userEmail" name="email" placeholder="Seu email" required>
-                <textarea id="message" [(ngModel)]="userMessage" name="message" placeholder="Sua mensagem"
-                    required></textarea>
-                <button type="submit" [disabled]="form.invalid">Enviar</button>
+            <form #form="ngForm">
+                <textarea id="message" [(ngModel)]="message" name="message" placeholder="Sua mensagem" required></textarea>
+                <button type="button" [disabled]="form.invalid" (click)="sendEmail(message)">Enviar</button>
             </form>
         </div>
         <div class="contact-section">
@@ -20,9 +18,9 @@
         </div>
     </div>
     <div class="dev-section">
-        <h4>Desenvolvido por</h4>
+        <p>Designed by</p>
         <p><a href="https://cristianomendes.vercel.app/" target="_blank" rel="noopener noreferrer">Cristiano Mendes | Software Engineer</a></p>
-        <p>Copyright &copy; 2024 - Todos os direitos reservados</p>
+        <p>Copyright &copy; 2024 - All Rights Reserved</p>
     </div>
 </footer>
 <app-message-dialog></app-message-dialog>

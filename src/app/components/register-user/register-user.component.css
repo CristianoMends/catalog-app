@@ -61,9 +61,6 @@ input.ng-invalid.ng-touched {
     justify-content: start;
     align-items: center;
 }
-#confirm, #password{
-    width: 50%;
-}
 
 .passwordContainer button {
     transform: translateX(-10px);
@@ -80,10 +77,21 @@ input.ng-invalid.ng-touched {
     cursor: pointer;
     background-color: var(--default-color-3);
 }
-
+*{
+    text-align: start;
+}
+.btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
 @media (max-width: 599px) {
     form {
         align-items: start;
         width: 90%;
+    }
+    .passwordContainer{
+        width: 100%;
     }
 }

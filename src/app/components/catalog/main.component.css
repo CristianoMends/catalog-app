@@ -22,7 +22,6 @@ header{
     min-height: 100vh;
     padding: 20px;
     padding-bottom: 100px;
-    background-color: rgba(255, 255, 230, 0.904);
 }
 .nav-bar{
     position: relative;
@@ -40,10 +39,8 @@ header{
 .qtd{
     text-align: center;
     padding: 15px;
-    background-color: #fff;
     color: black;
     text-shadow: none;
-    background-color: rgba(255, 255, 230, 0.904);
 }
 .opacity{
     opacity: 0.5;
@@ -74,6 +71,10 @@ header{
     align-items: center;
     gap: 5px;
 }
+.container{
+    background-color: #fff;
+    
+}
 @media (max-width: 599px) {
     * {
         font-size: xx-small;
@@ -82,12 +83,7 @@ header{
     .nav-bar{
         width: 100%;
     }
-    .product-container{
-        top: 80px;
+    .product-container button{
+        transform: translateY(-25px);
     }
-    .qtd{
-        top: 80px;
-        margin-top: 5px;
-    }
-
 }
