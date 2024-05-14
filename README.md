@@ -1,8 +1,7 @@
-## Status
-Em Desenvolvimento
+#The Catalog!
 ## Descrição do Projeto
 
-Esta aplicação permite que você gerencie um catálogo de produtos, incluindo a criação, atualização, exclusão e consulta de produtos e usuários.
+Esse é o aplicativo onde você pode divulgar seus produtos de forma rápida e fácil!
 
 ## Tecnologias Utilizadas
 <table align="center" style="width: 200px;">
