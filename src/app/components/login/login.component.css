@@ -56,9 +56,6 @@ button:hover {
   justify-content: center;
   align-items: center;
 }
-.passwordContainer img{
-  color: #ccc;
-}
 .passwordContainer button{
   width: 50px;
   margin: 0;
