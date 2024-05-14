@@ -24,7 +24,6 @@ label {
 }
 input[type="email"],
 input[type="password"] {
-  width: calc(100% - 20px);
   padding: 10px;
   margin-top: 5px;
   border: 1px solid #ddd;
@@ -43,10 +42,33 @@ button {
 button:hover {
   background-color: var(--default-color-1);
 }
+.passwordContainer input{
+  width: 100%;
+  margin: 0;
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.passwordContainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.passwordContainer img{
+  color: #ccc;
+}
+.passwordContainer button{
+  width: 50px;
+  margin: 0;
+  padding: 10px;
+  border-left: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
 
 @media (max-width: 599px) {
-.container{
-}
 form label{
   
   transform: translateX(-100px);

@@ -8,14 +8,21 @@
     </div>
 
     <label for="phone">Telefone:</label>
-    <input #phone="ngModel" type="tel" id="phone" [(ngModel)]="user.phone" name="phone" required
+    <input #phone="ngModel" type="tel" id="phone" [(ngModel)]="user.phone" name="phone" [required]="true"
       pattern="[0-9]{2}[0-9]{5}[0-9]{4}" placeholder="99 9 9999 9999">
-    <span *ngIf="phone.errors && (phone.dirty || phone.touched)" class="alert">
-      Digite um telefone valido!
-    </span>
+      <div *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+        <span *ngIf="phone.errors?.['required']" class="alert">
+            O telefone é obrigatório!
+        </span>
+        <span *ngIf="phone.errors?.['pattern']" class="alert">
+            O telefone deve ter o formato 99 9 9999-9999!
+        </span>
+    </div>
+
 
     <label for="address">Endereço:</label>
-    <input #address="ngModel" type="text" id="address" [(ngModel)]="user.address" name="address" required placeholder="Onde te encontrar?">
+    <input #address="ngModel" type="text" id="address" [(ngModel)]="user.address" name="address" required
+    placeholder="Onde encontrar sua loja?">
     <span *ngIf="address.errors && (address.dirty || address.touched)" class="alert">
       Digite um endereço valido!
     </span>
@@ -34,9 +41,12 @@
         <img [src]="hidePassword?'./assets/show.png':'./assets/hide.png' " alt="" width="13px">
       </button>
     </div>
-    <span *ngIf="password.errors && (password.dirty || password.touched)" class="alert">
-      Digite uma senha valida!
-    </span>
+    <div *ngIf="(password.dirty || password.touched)">
+      <span *ngIf="password.value.length < 6" class="alert">
+        Senha muito curta!
+      </span>
+    </div>
+
 
     <label for="confirm">Confirme sua senha:</label>
     <div class="passwordContainer">

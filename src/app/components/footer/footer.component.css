@@ -39,6 +39,7 @@
   border-radius: 4px;
   cursor: pointer;
   color: #fff;
+  box-shadow: var(--shadow);
 }
 
 .footer button:hover {

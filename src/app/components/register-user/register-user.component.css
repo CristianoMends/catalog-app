@@ -61,17 +61,20 @@ input.ng-invalid.ng-touched {
     justify-content: start;
     align-items: center;
 }
+.passwordContainer input{
+    border-right: none;
+}
 
 .passwordContainer button {
-    transform: translateX(-10px);
-    width: max-content;
-    padding: 10px;
+    width: 50px;
+    padding: 9px;
     background-color: var(--btn-color-1);
     color: white;
     border: none;
     box-shadow: var(--shadow);
     cursor: pointer;
     border-radius: 0 5px 5px 0;
+    text-align: center;
 }
 .passwordContainer button:hover{
     cursor: pointer;
@@ -85,6 +88,13 @@ input.ng-invalid.ng-touched {
     justify-content: center;
     align-items: center;
     width: 100%;
+}
+.btn-container button{
+    text-align: center;
+    width: 50%;
+}
+.btn-container button:hover{
+    background-color: var(--default-color-3);
 }
 @media (max-width: 599px) {
     form {

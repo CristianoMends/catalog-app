@@ -1,8 +1,8 @@
 <app-header>
-<nav>
-    <a href="#form" (click)="showLogin()">Login</a>
-    <a href="#form" (click)="showRegister()">Cadastro</a>
-</nav>
+    <nav>
+        <a href="#form" (click)="showLogin()">Login</a>
+        <a href="#form" (click)="showRegister()">Cadastro</a>
+    </nav>
 </app-header>
 <main class="main-container">
     <h1>AUMENTE A EXPOSIÇÃO DE SEUS PRODUTOS</h1>
@@ -11,14 +11,30 @@
         Grátis!
     </p>
     <div class="steps">
-        <label for="step">Crie sua conta <br><span class="arrow">&RightArrow;</span> </label>
-        <a href="#form" class="step" (click)="showLogin()">1</a>
-        <label for="step">Faça o login <br><span class="arrow">&RightArrow;</span></label>
-        <a href="#form" class="step" (click)="showRegister()">2</a>
-        <label for="step">Cadastre produtos <br><span class="arrow">&RightArrow;</span></label>
-        <a href="#" class="step">3</a>
-        <label for="step">Compartilhe seu catálogo <br><span class="arrow">&RightArrow;</span></label>
-        <a href="#" class="step">4</a>
+        <div class="steps-ca">
+            <a href="#form" class="step" (click)="showLogin()">1</a>
+            <div class="ca">
+                <label for="step">Crie sua conta</label>
+            </div>
+        </div>
+        <div class="steps-ca">
+            <a href="#form" class="step" (click)="showRegister()">2</a>
+            <div class="ca">
+                <label for="step">Faça o login</label>
+            </div>
+        </div>
+        <div class="steps-ca">
+            <a href="profile" class="step">3</a>
+            <div class="ca">
+                <label for="step">Adicione produtos</label>
+            </div>
+        </div>
+        <div class="steps-ca">
+            <a href="profile" class="step">4</a>
+            <div class="ca">
+                <label for="step">Compartilhe</label>
+            </div>
+        </div>
     </div>
 </main>
 <div class="extra-content">
@@ -28,11 +44,10 @@
     <div *ngIf="isRegisterVisible()">
         <span>Já tem conta? <button (click)="showLogin()">Fazer login</button></span>
         <app-register class="register"></app-register>
-    </div>  
+    </div>
     <div *ngIf="isLoginVisible()">
         <span>Não tem conta? <button (click)="showRegister()">Crie sua conta</button></span>
         <app-login class="login"></app-login>
     </div>
 </div>
 <app-footer></app-footer>
-

@@ -1,12 +1,12 @@
 :root {
     --default-color-1: #393939;
     --background: radial-gradient(circle, #000, rgb(57, 57, 83), #333333);
-    --btn-color-2: #556;
+    --btn-color-2: rgb(11, 11, 110);
     --btn-color-1: var(--btn-color-2);
     --default-color-3: #111;
     --default-color-4: #ccc;
     --default-color-5: #700;
-    --shadow: 1px 1px 5px var(--btn-color-2);
+    --shadow: 1px 1px 1px #fff;
     --blue: #112;
 }
 

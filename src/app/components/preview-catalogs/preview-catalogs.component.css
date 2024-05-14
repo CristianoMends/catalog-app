@@ -33,6 +33,7 @@
     box-shadow: var(--shadow);
 }
 a:hover{
+    transform: scale(102%);
     background-color: var(--default-color-3);
 }
 

@@ -1,10 +1,9 @@
-<div class="preview-container" [ngClass]="showOrHide()">
-    <div class="preview-content">
+<div class="preview-container" [ngClass]="showOrHide()" (click)="toggleVisibility()">
+    <div class="preview-content" (click)="toggleVisibility()">
         <img [src]="getProduct()?.image" class="product-image">
         <div>
             <h3 class="product-name">{{getProduct()?.name}}</h3>
             <p class="product-description">{{getProduct()?.description}}</p>
         </div>
     </div>
-    <button class="close" (click)="toggleVisibility()">X</button>       
 </div>
