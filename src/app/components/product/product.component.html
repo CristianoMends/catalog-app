@@ -2,8 +2,8 @@
     <p class="product-id"><span>COD: </span>{{ product.product_id}}</p>
     <img [src]="product.image" alt="{{ product.name }}" class="product-image">
     <h3 class="product-name">{{ product.name }}</h3>
-    <p class="product-price"><span class="sign">R$ </span>{{ product.price.toFixed(2) }}</p>
-    <p class="product-payment"> em até {{product.installment}}x de {{(product.price/10).toFixed(2)}} no cartão de credito </p>
+    <p class="product-price"><span class="sign">R$ </span>{{ product.price.toFixed(2).replace('.',',') }}</p>
+    <p class="product-payment"> em até {{product.installment}}x de {{(product.price/product.installment).toFixed(2).replace('.',',')}} no cartão de credito </p>
         <button class="preview-button" (click)="showPreview()">Visualizar</button>
         <ng-content #contact seller></ng-content>        
 </section>
