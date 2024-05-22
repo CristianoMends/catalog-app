@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  API_URL: 'https://thecatalogapi.vercel.app/user/'
+  API_URL: 'https://localhost:3000/'
 };  
