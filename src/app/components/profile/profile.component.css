@@ -8,7 +8,7 @@ nav {
 }
 
 nav a {
-    color: #fff;
+    color: #000;
     text-decoration: none;
 }
 
@@ -35,12 +35,13 @@ button {
     box-shadow: var(--shadow);
     border-radius: 5px;
     background-color: var(--btn-color-1);
-    color: #fff;
+    color: #000;
     width: max-content
 }
 
 button:hover {
-    background-color: var(--default-color-3);
+    background-color: #000;
+    color: #fff;
     cursor: pointer;
 }
 

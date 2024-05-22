@@ -38,11 +38,12 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  color: #fff;
+  color: #000;
   box-shadow: var(--shadow);
 }
 
 .footer button:hover {
+  color: #fff;
   background-color: var(--default-color-3);
 }
 
@@ -73,10 +74,11 @@ a {
   align-items: center;
   justify-content: center;
   padding: 1px;
+
 }
 
 a:hover {
-  background-color: var(--btn-color-2);
+  background-color: #aaaaaa81;
 }
 
 .dev-section a{

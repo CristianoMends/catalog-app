@@ -28,11 +28,11 @@ input[type="password"] {
   margin-top: 5px;
   border: 1px solid #ddd;
   border-radius: 4px;
+  border: none;
 }
 button {
   padding: 10px;
   background-color: var(--btn-color-1);
-  color: white;
   border: none;
   border-radius: 5px;
   box-shadow: var(--shadow);
@@ -40,7 +40,8 @@ button {
   margin: 0 25%;
 }
 button:hover {
-  background-color: var(--default-color-1);
+  color: #fff;
+  background-color: #000;
 }
 .passwordContainer input{
   width: 100%;

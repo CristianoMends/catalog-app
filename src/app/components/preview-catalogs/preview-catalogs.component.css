@@ -26,14 +26,15 @@
 .catalog{
     min-width: max-content;
     background-color: var(--btn-color-1);
-    color: #fff;
+    color: #000;
+    text-shadow: none;
     border: none;
     border-radius: 5px;
     padding: 10px;
     box-shadow: var(--shadow);
 }
 a:hover{
-    transform: scale(102%);
+    color: #fff;
     background-color: var(--default-color-3);
 }
 

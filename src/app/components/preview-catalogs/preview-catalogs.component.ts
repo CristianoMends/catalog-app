@@ -2,6 +2,7 @@ import { AfterViewInit, Component } from '@angular/core';
 import { CatalogService } from '../../service/catalog.service';
 import { PreviewCatalog } from '../../interface/preview-catalog';
 import { CommonModule } from '@angular/common';
+import { Init } from 'node:v8';
 
 @Component({
   selector: 'app-preview-catalogs',
@@ -10,12 +11,17 @@ import { CommonModule } from '@angular/common';
   templateUrl: './preview-catalogs.component.html',
   styleUrl: './preview-catalogs.component.css'
 })
-export class PreviewCatalogsComponent implements AfterViewInit {
+export class PreviewCatalogsComponent {
   catalogs!:PreviewCatalog[]
   localhost:string = '' 
     constructor(private catalogService:CatalogService){}
 
     ngOnInit(): void {
+      try {
+        this.localhost = window.location.href;
+      } catch (error) {
+        
+      }  
       this.getAllCatalogs();
     }
 
@@ -30,11 +36,7 @@ export class PreviewCatalogsComponent implements AfterViewInit {
       })
     }
     ngAfterViewInit(): void {
-      try {
-        this.localhost =  window.location.href;
-      } catch (error) {
-        
-      }      
+   
     }
 
     getHost():string{

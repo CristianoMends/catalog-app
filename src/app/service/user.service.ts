@@ -29,7 +29,6 @@ export class UserService {
     return this.http.post<any>(this.apiUrl + 'auth', body, { headers: headers }).pipe(
       tap(response => this.storeToken(response.access_token)),
       catchError(error => {
-        console.error('Authentication error:', error);
         throw error;
       })
     );
@@ -60,22 +59,21 @@ export class UserService {
     return null;
   }
 
-  validateToken(){
+  validateToken() {
     const token = this.getToken();
-    if(!token){
+    if (!token) {
       return;
     }
 
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    this.http.get(`${this.apiUrl}auth`,{ headers }).subscribe({
-      next:()=>{
-        console.log('token is ok');
+    this.http.get(`${this.apiUrl}auth`, { headers }).subscribe({
+      next: () => {
+
       },
-      error:(err:HttpErrorResponse)=>{
+      error: (err: HttpErrorResponse) => {
         this.clearToken();
-        console.error(err);
       }
     });
   }
@@ -89,7 +87,6 @@ export class UserService {
   clearToken(): void {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.removeItem('access_token');
-      console.log('localstorange is cleaned');
     }
   }
 

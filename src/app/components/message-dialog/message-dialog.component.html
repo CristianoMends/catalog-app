@@ -1,7 +1,7 @@
 <section class="container" *ngIf="isVisible()">
 
     <div class="dialog-container">
-        <h1>{{getTitle()}}</h1>
+        <h3>{{getTitle()}}</h3>
         <p *ngIf="getMessage()">{{getMessage()}}</p>
         <div>
             <button *ngIf="getCancel()" (click)="runCancel()">Cancelar</button>

@@ -9,13 +9,13 @@ main {
 
 }
 a{
+    color: #000;
     text-decoration: none;
 }
 
 .steps {
     width: 100%;
     padding: 0 30%;
-    background-color: rgba(12, 12, 143, 0.568);
 }
 
 .steps-ca {
@@ -37,11 +37,13 @@ a{
     height: 40px;
     padding: 5px;
     animation: moveToStep 2s linear infinite;
-    color: #fff;
+    color: #000;
+    text-shadow: none;
     text-decoration: none;
     box-shadow: var(--shadow);
 }
 .step:hover{
+    color: #fff;
     background-color: var(--default-color-3);
     transform: scale(1.1);
 }
@@ -76,7 +78,7 @@ button {
 button:hover {
     cursor: pointer;
     color: #fff;
-    background-color: var(--btn-color-1);
+    background-color: #000;
 }
 
 .form {    
@@ -90,7 +92,8 @@ button:hover {
 }
 
 nav a {
-    color: #fff;
+    color: #000;
+    text-shadow: none;
     background-color: var(--btn-color-1);
     padding: 5px;
     border: none;
@@ -100,6 +103,7 @@ nav a {
 }
 
 nav a:hover {
+    color: #fff;
     cursor: pointer;
     background-color: var(--default-color-3);
 }
