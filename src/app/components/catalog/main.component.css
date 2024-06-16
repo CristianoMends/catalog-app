@@ -47,11 +47,14 @@ header{
 }
 .nav-bar input{
     border: none;
+    padding: 5px;
+    border-radius: 5px;
     color: #fff;
     background-color: transparent;
 }
 .nav-bar input:hover{
     cursor: pointer;
+    color: #000;
     background-color: var(--btn-color-1);
 }
 .contactSeller, button:hover{
