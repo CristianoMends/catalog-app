@@ -23,7 +23,8 @@ label {
   margin-top: 10px;
 }
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="text"] {
   padding: 10px;
   margin-top: 5px;
   border: 1px solid #ddd;
@@ -40,8 +41,7 @@ button {
   margin: 0 25%;
 }
 button:hover {
-  color: #fff;
-  background-color: #000;
+  filter: invert(1);
 }
 .passwordContainer input{
   width: 100%;
@@ -64,6 +64,7 @@ button:hover {
   border-left: none;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  border-left: 1px solid #000;
 }
 
 @media (max-width: 599px) {

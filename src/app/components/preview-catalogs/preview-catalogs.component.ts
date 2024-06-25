@@ -42,4 +42,7 @@ export class PreviewCatalogsComponent {
     getHost():string{
       return this.localhost;
     }
+    redirect(link:string){
+      window.open(this.getHost()+link);
+    }
 }

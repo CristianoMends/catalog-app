@@ -77,10 +77,11 @@ input.ng-invalid.ng-touched {
     cursor: pointer;
     border-radius: 0 5px 5px 0;
     text-align: center;
+    border-left: 1px solid #000;
 }
 .passwordContainer button:hover{
     cursor: pointer;
-    background-color: var(--default-color-3);
+    filter: invert(1);
 }
 *{
     text-align: start;

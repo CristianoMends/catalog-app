@@ -22,17 +22,18 @@ export class LoginComponent {
     this.isLoggedIn();
 
   }
-
-  hidePassword = true;
-  hideConfirmPassword = true;
+  type = 'password';
+  isVisible = false;
   private auth: Auth = { email: '', password: '' };
   private token: string = '';
 
-  toggleVisibility(field: string) {
-    if (field === 'password') {
-      this.hidePassword = !this.hidePassword;
-    } else if (field === 'confirm') {
-      this.hideConfirmPassword = !this.hideConfirmPassword;
+  toggleVisibility() {
+    if (this.type === 'password') {
+      this.type =  'text';
+      this.isVisible = true;
+    } else if (this.type === 'text') {
+      this.type =  'password';
+      this.isVisible = false;
     }
   }
 

@@ -1,10 +1,13 @@
 <div class="container" *ngIf="catalogs && catalogs.length > 0">
     <h2>Conheça catálogos de nossos usuários</h2>
-    <div class="transition">
         <section class="preview-container">
-            <a [href]="getHost()+c.link" class="catalog" *ngFor="let c of catalogs">
+            <div (click)="redirect(c.link)" class="catalog" *ngFor="let c of catalogs">
                 <p>{{c.name}}</p>
-            </a>
+                <div class="images" *ngIf="c.productImages.length > 0">
+                    <img [src]="c.productImages[0].image" alt="">
+                    <img [src]="c.productImages[1].image" alt="">
+                    <img [src]="c.productImages[2].image" alt="">
+                </div>
+            </div>
         </section>
-    </div>
 </div>

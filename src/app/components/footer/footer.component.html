@@ -1,20 +1,11 @@
 <footer class="footer">
     <div class="container">
-        <div class="form">
-            <h4>Envie uma Mensagem</h4>
-            <form #form="ngForm">
-                <textarea id="message" [(ngModel)]="message" name="message" placeholder="Sua mensagem" required></textarea>
-                <button type="button" [disabled]="form.invalid" (click)="sendEmail(message)">Enviar</button>
-            </form>
-        </div>
+        
         <div class="contact-section">
-            <a href=""> <img src="./assets/gmail.png" alt="icon gmail" width="30px"></a>
             <a href="https://github.com/CristianoMends" target="_blank"><img src="./assets/github.png" alt="icon github"
                     width="30px"></a>
             <a href="https://www.linkedin.com/in/cristiano-mendes-link/" target="_blank"><img
                     src="./assets/linkedin.png" alt="icon linkedin" width="25px"> </a>
-            <a href="https://www.instagram.com/cristiano_mend3s" target="_blank"><img
-                    src="./assets/Instagram_Glyph_White.png" alt="icon instagram" width="25px"></a>
         </div>
     </div>
     <div class="dev-section">

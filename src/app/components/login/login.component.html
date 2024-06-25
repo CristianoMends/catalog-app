@@ -5,9 +5,9 @@
     <input type="email" id="email" [(ngModel)]="getAuth().email" name="email" required>
     <label for="password">Senha:</label>
     <div class="passwordContainer">
-      <input type="password" id="password" [(ngModel)]="getAuth().password" name="password" required minlength="6">
-      <button type="button" (click)="toggleVisibility('password')">
-        <img [src]="hidePassword?'./assets/show.png':'./assets/hide.png' " alt="" width="13px">
+      <input [type]="type" id="password" [(ngModel)]="getAuth().password" name="password" required minlength="6">
+      <button type="button" (click)="toggleVisibility()">
+        <img [src]="isVisible?'./assets/show.png':'./assets/hide.png' " alt="" width="13px">
       </button>
     </div>    
     <button type="submit">Entrar</button>

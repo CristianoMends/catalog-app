@@ -23,18 +23,20 @@
   
   .search-button {
     background-color: var(--btn-color-1);
-    color: #fff;
+    color: #000;
     padding: 10px;
     cursor: pointer;
     width: max-content;
     border-radius: 0px 5px 5px 0px;
     box-shadow: var(--shadow);
     border: none;
+    border-left: 1px solid #000;
 
   }
   
   .search-button:hover {
     background-color: var(--default-color-3);
+    color: #fff;
   }
   @media (max-width: 599px) {
     .search-container{
