@@ -9,7 +9,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 90;
+    z-index: 99;
     height: 100%;
     width: 100%;
     transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
@@ -33,22 +33,20 @@
     justify-content: start;
     align-items: center;
     opacity: 1;
-    flex-direction: row;
+    flex-direction: column;
     background-color: rgba(65, 65, 65, 0.97);
     z-index: 11;
     border-radius: 5%;
     width: 650px;
-    height: 400px;
+    height: 80%;
     transition: opacity 0.1s ease-in-out;
     box-shadow: var(--shadow);
-    overflow: hidden;
+    overflow-y: auto;
     z-index: 99;
 }
 .preview-content img{
-    height: 100%;
-    width: 50%;
-    border-top-left-radius: 5%;
-    border-bottom-left-radius: 5%;
+    max-width: 100%;
+    height: auto;
 
 }
 .preview-content div{
@@ -61,13 +59,11 @@
     flex-direction: column;
     height: 100%;
     padding: 10px;
-    overflow-y: auto;
 }
 
 @media (max-width: 599px) {
     .preview-content{
         margin: 0 10px;
-        height: 200px;
-        width: 350px;
+        width: 100%;
     }
 }

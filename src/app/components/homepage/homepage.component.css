@@ -134,6 +134,7 @@ nav a:hover {
     }
     .steps {
         padding: 0 25%;
+        margin-bottom: 100px;
     }
 
     * {
