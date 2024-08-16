@@ -15,12 +15,12 @@ import { MessageDialogComponent } from "../message-dialog/message-dialog.compone
 import { LoadingScreenComponent } from "../loading-screen/loading-screen.component";
 
 @Component({
-    selector: 'app-main',
-    standalone: true,
-    templateUrl: './main.component.html',
-    styleUrl: './main.component.css',
-    providers: [CatalogService],
-    imports: [HeaderComponent, ProductComponent, CommonModule, FooterComponent, PreviewComponent, SearchBarComponent, MessageDialogComponent, LoadingScreenComponent]
+  selector: 'app-main',
+  standalone: true,
+  templateUrl: './main.component.html',
+  styleUrl: './main.component.css',
+  providers: [CatalogService],
+  imports: [HeaderComponent, ProductComponent, CommonModule, FooterComponent, PreviewComponent, SearchBarComponent, MessageDialogComponent, LoadingScreenComponent]
 })
 export class MainComponent {
   products: Product[] = [];
@@ -53,17 +53,15 @@ export class MainComponent {
           if (!this.categories.includes(c)) {
             this.categories.push(c);
           }
-          LoadingScreenComponent.setInvisible()
         })
+        LoadingScreenComponent.setInvisible()
       },
       error: (err) => {
         console.error(err)
         LoadingScreenComponent.setInvisible()
       }
     }
-  );
-  LoadingScreenComponent.setInvisible();
-
+    );
   }
   searchByName(searchTerm: string) {
     LoadingScreenComponent.setVisible()
@@ -75,7 +73,8 @@ export class MainComponent {
       },
       error: (err) => {
         LoadingScreenComponent.setInvisible()
-        console.error(err)}
+        console.error(err)
+      }
     });
   }
   searchByCategory(category: string) {
@@ -95,7 +94,7 @@ export class MainComponent {
     return this.preview.isVisible() ? 'opacity' : '';
   }
   shareLink() {
-    this.sendMessage('',`Olá! Confira o catálogo de produtos de ${this.user.fullName} nesse link: ${window.location.href}`);
+    this.sendMessage('', `Olá! Confira o catálogo de produtos de ${this.user.fullName} nesse link: ${window.location.href}`);
   }
 
   sendMessage(phone: string, message: string) {
@@ -112,7 +111,7 @@ export class MainComponent {
       return;
     }
     console.log(`send message to ${this.user.phone} about product with id ${product.product_id}`);
-    this.sendMessage('55'+this.user.phone, `Olá, gostaria de mais informações sobre o produto: \n${product.name}\nCódigo: ${product.product_id}`);
+    this.sendMessage('55' + this.user.phone, `Olá, gostaria de mais informações sobre o produto: \n${product.name}\nCódigo: ${product.product_id}`);
   }
   getUser(product: Product) {
     this.userService.getUserById(product.product_id).subscribe({
