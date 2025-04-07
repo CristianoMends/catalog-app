@@ -1,4 +1,4 @@
-# The Catalog!
+# Vistrô
 
 
 ## Descrição do Projeto
@@ -26,22 +26,4 @@ Com esse sistema você será capaz de divulgar seus produtos de forma rápida e 
 [`https://thecatalog.vercel.app/`](https://thecatalog.vercel.app)
 
 </div>
-
-## Capturas de tela
-
-Página onde os produtos são mostrados para os seus clientes
-<img src="docs/catalog1.png">
-Ao clicar no botão de visualizar o produto
-<img src="docs/previewproduct.png">
-Na página do perfil do usuário quando seleciona um produto para deletar
-<img src="docs/deletingproduct.png">
-Cadastrando produtos
-<img src="docs/savingproduct.png">
-Página inicial
-<img src="docs/homepage1.png">
-Seção de login
-<img src="docs/homepage2.png">
-Seção de cadastro
-<img src="docs/homepage3.png">
-
 
