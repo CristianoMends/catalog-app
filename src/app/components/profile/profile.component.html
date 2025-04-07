@@ -1,36 +1,58 @@
 <app-header>
     <button class="logout" (click)="logout()">Sair</button>
 </app-header>
-<nav>
-    <button (click)="chooseManagement(1)">
-        Cadastrar item
-    </button>
-    <button (click)="chooseManagement(2)">
-        Deletar item
-    </button>
-    <!--<button (click)="chooseManagement(3)">
-        Atualizar item
-    </button>-->
-</nav>
-<div class="container-main">
-    <section class="store-info" *ngIf="profile">
-        <a href="/catalog/{{profile.fullName.toLocaleLowerCase().replace(' ','_')}}">Meu Catálogo</a>
-        <p><strong>Loja:</strong> {{profile.fullName}}</p>
-        <p><strong>Telefone:</strong> {{formatPhone(profile.phone)}}</p>
-        <p><strong>Endereço:</strong> {{profile.address}}</p>
 
-        <div class="selectProducts-container" *ngIf="getChoosenManagement() == 2 || getChoosenManagement() == 3">
-            <h3>Selecione um produto: </h3>
-            <select id="selectProducts" name="selectProducts" [(ngModel)]="selectedProductId"
-                (change)="onProductSelected()">
-                <option value="null" disabled selected>Produto</option>
-                <option *ngFor="let product of profile.products" [value]="product.product_id">
-                    {{product.name.substring(0,25)+'...'}}
-                </option>
-            </select>
+<div class="container-main">
+    <!-- Informações do Usuário -->
+    <section class="user-info" *ngIf="profile">
+        <h2>Minhas Informações</h2>
+
+        <div class="catalog-link">
+            <a [href]="'/catalog/' + profile.fullName.toLocaleLowerCase().replaceAll(' ', '_')" target="_blank">
+                Meu Catálogo
+            </a>
+            <button (click)="copyCatalogLink()" title="Copiar link">
+                📋
+            </button>
+        </div>
+        <p><strong>Nome:</strong> {{ profile.fullName }}</p>
+        <p><strong>Email:</strong> {{ profile.email }}</p>
+        <p><strong>Telefone:</strong> {{ formatPhone(profile.phone) }}</p>
+        <p><strong>Endereço:</strong> {{ profile.address }}</p>
+    </section>
+
+    <!-- Estatísticas dos Produtos em Colunas -->
+    <section class="product-stats" *ngIf="profile.products.length > 0">
+        <h3>Estatísticas dos Produtos</h3>
+        <div class="stats-columns">
+            <div class="stats-column">
+                <div class="stats-card">
+                    <h4>Total de Produtos</h4>
+                    <p>{{ profile.products.length }}</p>
+                </div>
+            </div>
+            <div class="stats-column">
+                <div class="stats-card">
+                    <h4>Produtos por Categoria</h4>
+                    <ul>
+                        <li *ngFor="let category of getCategoryStats()">
+                            {{ category.name }}: {{ category.count }} produtos
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Ações de Gerenciamento -->
+    <section class="product-actions">
+        <h3>Ações de Gerenciamento</h3>
+        <button (click)="chooseManagement(1)">Cadastrar Novo Produto</button>
+        <button (click)="chooseManagement(2)">Excluir Produto</button>
+    </section>
+
+
+    <!-- Exibição de Produto Selecionado para Deletar ou Atualizar -->
     <section class="container">
         <section class="product" *ngIf="selectedProduct && getChoosenManagement() == 2">
             <app-product [product]="selectedProduct"></app-product>
@@ -38,7 +60,11 @@
                 <button (click)="deleteProduct(selectedProduct.product_id)">Deletar</button>
             </div>
         </section>
-        <app-register-product *ngIf="getChoosenManagement() == 1"></app-register-product>
+
+        <!-- Registrar Novo Produto -->
+        <app-register-product id="sectionRegisterProduct" *ngIf="getChoosenManagement() == 1"></app-register-product>
+
+        <!-- Atualizar Produto -->
         <app-update-product *ngIf="selectedProduct && getChoosenManagement() == 3"
             [product]="selectedProduct"></app-update-product>
     </section>

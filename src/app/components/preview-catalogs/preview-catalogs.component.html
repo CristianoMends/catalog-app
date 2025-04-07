@@ -1,19 +1,18 @@
 <div class="container" *ngIf="catalogs && catalogs.length > 0">
     <h2>Conheça catálogos de nossos usuários</h2>
+    <p>Veja como eles estão apresentando seus produtos com estilo e praticidade.</p>
+
     <section class="preview-container">
         @for (c of catalogs; track $index) {
-        @if (c.productImages.length >= 3) {
-        <div (click)="redirect(c.link)" class="catalog">
-            <p>{{c.name}}</p>
+        @if (c.productImages.length >= 1) {
+        <div (click)="redirect(c.link)" class="catalog animated-catalog" [style.animationDelay]="($index * 1.5) + 's'"
+            title="Ver catálogo de {{c.name}}">
+            <h3>{{ c.name }}</h3>
             <div class="images">
-                <img [src]="c.productImages[0].image" alt="">
-                <img [src]="c.productImages[1].image" alt="">
-                <img [src]="c.productImages[2].image" alt="">
+                <img [src]="c.productImages[0].image" alt="Imagem do catálogo {{c.name}}">
             </div>
         </div>
         }
-
         }
-
     </section>
 </div>

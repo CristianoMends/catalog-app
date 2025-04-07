@@ -1,6 +1,5 @@
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { HeaderComponent } from "../header/header.component";
-import { SearchBarComponent } from "../search-bar/search-bar.component";
 import { Profile } from '../../interface/profile.interface';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -21,7 +20,7 @@ import { LoadingScreenComponent } from "../loading-screen/loading-screen.compone
     standalone: true,
     templateUrl: './profile.component.html',
     styleUrl: './profile.component.css',
-    imports: [HeaderComponent, SearchBarComponent, CommonModule, ProductComponent, FormsModule, PreviewComponent, MessageDialogComponent, RegisterProductComponent, UpdateProductComponent, LoadingScreenComponent]
+    imports: [HeaderComponent, CommonModule, ProductComponent, FormsModule, PreviewComponent, MessageDialogComponent, RegisterProductComponent, UpdateProductComponent, LoadingScreenComponent]
 })
 export class ProfileComponent {
     selectedProductId: number | null = null;
@@ -52,6 +51,15 @@ export class ProfileComponent {
             this.loadUserProfile();
         }
     }
+    copyCatalogLink(){
+        const catalogLink = `${window.location.origin}/catalog/${this.profile.fullName.toLocaleLowerCase().replaceAll(' ', '_')}`;
+        navigator.clipboard.writeText(catalogLink).then(() => {
+            MessageDialogComponent.showMessage('Link copiado!', 'O link do seu catálogo foi copiado para a área de transferência!')
+        }).catch(err => {
+            console.error('Erro ao copiar o link:', err);
+        });
+    }
+    
     loadUserProfile() {
         LoadingScreenComponent.setVisible()
         const res = this.userService.getProfile();
@@ -69,6 +77,25 @@ export class ProfileComponent {
             }
         });
     }
+
+    calculateAveragePrice(): number {
+        const total = this.profile.products.reduce((sum, product) => sum + product.price, 0);
+        return total / this.profile.products.length;
+    }
+
+    calculateTotalInstallments(): number {
+        return this.profile.products.reduce((sum, product) => sum + product.installment, 0);
+    }
+
+    getCategoryStats() {
+        const categories = new Map();
+        this.profile.products.forEach(product => {
+            categories.set(product.category, (categories.get(product.category) || 0) + 1);
+        });
+        return Array.from(categories, ([name, count]) => ({ name, count }));
+    }
+
+
 
     logout() {
         if (isPlatformBrowser(this.platformId)) {
@@ -130,6 +157,6 @@ export class ProfileComponent {
     getChoosenManagement() {
         return ProfileComponent.chosenManagement;
     }
-
+    
 
 }

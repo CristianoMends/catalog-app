@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MessageDialogComponent } from '../message-dialog/message-dialog.component';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -11,24 +11,24 @@ import { ProductService } from '../../service/product.service';
 import { LoadingScreenComponent } from '../loading-screen/loading-screen.component';
 
 @Component({
-    selector: 'app-register-product',
-    standalone: true,
-    templateUrl: './register-product.component.html',
-    styleUrl: './register-product.component.css',
-    imports: [CommonModule, FormsModule, MessageDialogComponent, LoadingScreenComponent]
+  selector: 'app-register-product',
+  standalone: true,
+  templateUrl: './register-product.component.html',
+  styleUrl: './register-product.component.css',
+  imports: [CommonModule, FormsModule, MessageDialogComponent, LoadingScreenComponent]
 })
 export class RegisterProductComponent {
 
   constructor(
     private productService: ProductService
   ) { }
-
-   @Input() product: CreateProduct = {
+  @Output() hiddenEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Input() product: CreateProduct = {
     name: '',
     category: '',
     description: '',
     price: undefined,
-    installment : undefined,
+    installment: undefined,
     file: undefined
   };
 
@@ -38,7 +38,7 @@ export class RegisterProductComponent {
     'Roupas Masculinas', 'Roupas Femininas', 'Roupas Infantis', 'Calçados', 'Acessórios de Moda',
     'Produtos de Cuidados Pessoais', 'Cosméticos', 'Maquiagem', 'Produtos de Cuidado com a Pele', 'Produtos de Cuidado Capilar', 'Produtos de Cuidado com as Unhas', 'Perfumes e Fragrâncias', 'Produtos para Barbear e Depilação', 'Produtos de Higiene',
     'Equipamentos Esportivos', 'Camping e Outdoor', 'Fitness e Musculação', 'Esportes Aquáticos',
-    'Peças e Acessórios automotivos' , 'Produtos de Manutenção Automotiva',
+    'Peças e Acessórios automotivos', 'Produtos de Manutenção Automotiva',
     'Brinquedos', 'Produtos de Bebê', 'Roupas Infantis', 'Jogos Educativos',
     'Alimentos para Animais', 'Acessórios para Pets', 'Higiene para Pets',
     'Livros', 'Material Escolar', 'Escritório e Papelaria', 'Arte e Artesanato',
@@ -48,25 +48,30 @@ export class RegisterProductComponent {
   ];
   ngOnInit(): void {
     this.categories.sort();
-    
+
+  }
+
+  hidden() {
+    this.hiddenEvent.emit(true);
   }
 
   onSubmit(form: NgForm) {
     if (form.valid) {
-        this.product.price = +this.product.price!.toFixed(2);      
+      this.product.price = +this.product.price!.toFixed(2);
       MessageDialogComponent.showMessage('Deseja salvar esse produto?', undefined,
         async () => {
           LoadingScreenComponent.setVisible()
           await this.productService.save(this.product).subscribe({
             next: () => {
               LoadingScreenComponent.setInvisible();
-              MessageDialogComponent.showMessage('Produto salvo com sucesso!',undefined,()=>{}) 
+              MessageDialogComponent.showMessage('Produto salvo com sucesso!', undefined, () => { })
               form.reset()
-            },              
+            },
             error: (err) => {
               LoadingScreenComponent.setInvisible();
-              MessageDialogComponent.showMessage('Erro ao cadastrar!',undefined,()=>{});
-              console.error(err) }
+              MessageDialogComponent.showMessage('Erro ao cadastrar!', undefined, () => { });
+              console.error(err)
+            }
           });
         },
         () => {
@@ -87,5 +92,5 @@ export class RegisterProductComponent {
     }
   }
 
-  
+
 }

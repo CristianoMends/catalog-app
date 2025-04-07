@@ -1,4 +1,4 @@
-import { Component, Injectable, Input } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { Product } from '../../interface/product.interface';
 import { CommonModule } from '@angular/common';
 
@@ -10,26 +10,30 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './preview.component.html',
-  styleUrl: './preview.component.css'
+  styleUrls: ['./preview.component.css']
 })
 export class PreviewComponent {
   private static visible: boolean = false;
   private static product: Product | null = null;
 
-  isVisible() {
+  isVisible(): boolean {
     return PreviewComponent.visible;
   }
-  setProduct(product:Product){
+
+  setProduct(product: Product): void {
     PreviewComponent.product = product;
   }
-  getProduct():Product | null{
+
+  getProduct(): Product | null {
     return PreviewComponent.product;
   }
-  toggleVisibility() {
-    PreviewComponent.visible = !PreviewComponent.visible
-  }
-   showOrHide():string {
 
+  toggleVisibility(): void {
+    PreviewComponent.visible = !PreviewComponent.visible;
+  }
+
+  // Método que retorna a classe de visibilidade para a sobreposição
+  showOrHide(): string {
     return this.isVisible() ? 'visible' : 'invisible';
   }
 }

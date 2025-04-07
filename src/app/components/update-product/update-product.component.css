@@ -1,52 +1,120 @@
-.register{
+.register {
     height: max-content;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 15px;
+    padding: 20px;
 }
+
 form {
     margin: auto;
     padding: 20px;
     border: 1px solid #ccc;
-    box-shadow: var(--shadow);
-    gap: 5px;
-    width: 35%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    gap: 15px;
+    width: 50%;
     display: flex;
-    border-radius: 5px;
-    text-align: start;
+    border-radius: 10px;
+    text-align: left;
     flex-direction: column;
+    background-color: #f9f9f9;
+    color: #333;
 }
+
 label {
-    display: block;
     margin-top: 10px;
 }
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
-input[type="tel"] {
+input[type="tel"],
+input[type="number"] {
     width: 100%;
-    padding: 8px;
+    padding: 12px;
     margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 1rem;
 }
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+.btns {
+    gap: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 button {
-    padding: 10px;
-    background-color: var(--btn-color-1);
-    color: white;
+    padding: 12px;
+    background-color: #007BFF;
+    color: #fff;
     border: none;
     border-radius: 5px;
-    box-shadow: var(--shadow);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    margin: 0 25%;
+    margin: 20px 0;
+    font-size: 1.1rem;
 }
+
 button:hover {
-    background-color: var(--default-color-1);
+    background-color: #0056b3;
+    transition: background-color 0.3s ease;
 }
+
+button:disabled {
+    background-color: #d6d6d6;
+    cursor: not-allowed;
+}
+
 .alert {
     color: red;
-  }
-  
-  input.ng-invalid.ng-touched {
+    font-size: 0.875rem;
+    margin-top: 5px;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
     border-color: red;
-  }
+}
+
+*:not(button) {
+    text-align: start;
+}
+
+input:focus {
+    outline: none;
+    border: none;
+}
+
+select:hover,input[type="file"]:hover{
+    cursor: pointer;
+} 
+
+/* Responsividade */
+@media (max-width: 768px) {
+    form {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    form {
+        width: 100%;
+    }
+}

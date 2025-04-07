@@ -1,0 +1,133 @@
+header {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 99;
+    background-color: var(--default-color-1);
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    display: block;
+}
+
+.nav-bar {
+    /* Espaço abaixo do header fixo */
+    background-color: var(--default-color-3);
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    height: 70px;
+    overflow-x: auto;
+}
+
+.nav-bar input[type="button"] {
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.6rem;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+.nav-bar input[type="button"]:hover {
+    background-color: var(--btn-color-1);
+    color: #fff;
+}
+
+/* Container Geral do Catálogo */
+.container {
+    background-color: #fff;
+    padding-top: 20px;
+    margin-top: 0;
+}
+
+/* Exibição da Quantidade de Produtos Encontrados */
+.qtd {
+    text-align: center;
+    padding: 15px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.product-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: start;
+    min-height: 100vh;
+    padding: 20px;
+    padding-bottom: 100px;
+}
+
+.opacity {
+    opacity: 0.5;
+}
+
+/* Botão para Contato do Vendedor (dentro do card) */
+.contactSeller,
+.contactSeller:hover,
+.contactSeller:focus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 8px 12px;
+    background-color: #fff;
+    border: 2px solid var(--btn-color-1);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+.share-button{
+    background-color: var(--btn-color-1);
+    font-weight: 500;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+    margin-left: 5px;
+
+    &:hover{
+        background-color: var(--btn-color-2);
+        color: black;
+    }
+}
+
+.contactSeller:hover {
+    background-color: var(--btn-color-1);
+    color: #fff;
+}
+
+/* Classe para reduzir a opacidade quando o preview estiver ativo */
+.opacity {
+    opacity: 0.5;
+}
+
+.container {
+    background-color: #fff;
+
+}
+
+@media (max-width: 599px) {
+    * {
+        font-size: xx-small;
+        text-align: start;
+    }
+
+    .nav-bar {
+        width: 100%;
+    }
+
+    .product-container button {
+        transform: translateY(-25px);
+    }
+}

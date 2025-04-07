@@ -1,0 +1,58 @@
+<app-header>
+    <button class="logout" (click)="logout()">Sair</button>
+</app-header>
+
+<div class="container-main" *ngIf="profile">
+    <!-- Informações do Usuário -->
+    <section class="user-info" *ngIf="profile">
+        <h3>Minhas Informações</h3>
+        <button class="catalog-link" (click)="copyCatalogLink()" title="Copiar link">
+            {{ profile.fullName.toLocaleLowerCase().replaceAll(' ', '_') }}
+        </button>
+        <p><strong>Nome:</strong> {{ profile.fullName }}</p>
+        <p><strong>Email:</strong> {{ profile.email }}</p>
+        <p><strong>Telefone:</strong> {{ formatPhone(profile.phone) }}</p>
+        <p><strong>Endereço:</strong> {{ profile.address }}</p>
+    </section>
+
+    <!-- Lista de Produtos -->
+    <section class="product-list" *ngIf="profile && profile.products.length > 0">
+        <h3>Meus Produtos ({{ profile.products.length }})</h3>
+        <div class="product-list-scroll">
+            <div class="product-item" *ngFor="let product of profile.products">
+                <strong>{{ product.name }}</strong>
+                <span class="category">{{ product.category }}</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Ações de Gerenciamento -->
+    <section class="product-actions">
+        <h3>Ações de Gerenciamento</h3>
+        <button (click)="chooseManagement(1)">Cadastrar Novo Produto</button>
+    </section>
+
+
+    <!-- Exibição de Produto Selecionado para Deletar ou Atualizar -->
+    <section class="container" *ngIf="getChoosenManagement() != 0">
+
+        <section class="product" *ngIf="selectedProduct && getChoosenManagement() == 2">
+            <app-product [product]="selectedProduct"></app-product>
+            <div class="options">
+                <button (click)="deleteProduct(selectedProduct.product_id)">Deletar</button>
+            </div>
+        </section>
+
+        <!-- Registrar Novo Produto -->
+        <app-register-product id="sectionRegisterProduct" *ngIf="getChoosenManagement() == 1"
+            (hiddenEvent)="hiddenRegisterProduct()"></app-register-product>
+
+        <!-- Atualizar Produto -->
+        <app-update-product *ngIf="selectedProduct && getChoosenManagement() == 3"
+            [product]="selectedProduct"></app-update-product>
+    </section>
+</div>
+
+<app-preview></app-preview>
+<app-message-dialog></app-message-dialog>

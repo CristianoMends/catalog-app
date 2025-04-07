@@ -3,15 +3,15 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Auth } from '../../interface/auth.interface';
 import { UserService } from '../../service/user.service';
-import { MessageDialogComponent } from '../message-dialog/message-dialog.component';
-import { User } from '../../interface/user.interface';
+import { MessageDialogComponent } from '../../components/message-dialog/message-dialog.component';
+import { HeaderComponent } from '../../components/header/header.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
-  imports: [CommonModule, FormsModule, MessageDialogComponent]
+  imports: [HeaderComponent, CommonModule, FormsModule, MessageDialogComponent]
 })
 export class LoginComponent {
 
@@ -29,16 +29,20 @@ export class LoginComponent {
 
   toggleVisibility() {
     if (this.type === 'password') {
-      this.type =  'text';
+      this.type = 'text';
       this.isVisible = true;
     } else if (this.type === 'text') {
-      this.type =  'password';
+      this.type = 'password';
       this.isVisible = false;
     }
   }
 
   getAuth(): Auth {
     return this.auth;
+  }
+
+  goBack() {
+    window.location.href = '/';
   }
 
   isLoggedIn() {

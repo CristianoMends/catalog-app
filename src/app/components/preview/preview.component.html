@@ -1,9 +1,12 @@
 <div class="preview-container" [ngClass]="showOrHide()" (click)="toggleVisibility()">
-    <div class="preview-content" (click)="toggleVisibility()">
-        <img [src]="getProduct()?.image" class="product-image">
-        <div>
-            <h3 class="product-name">{{getProduct()?.name}}</h3>
-            <p class="product-description">{{getProduct()?.description}}</p>
-        </div>
+  <div class="preview-content" (click)="$event.stopPropagation()">
+    <div class="preview-layout">
+      <img [src]="getProduct()?.image" alt="{{ getProduct()?.name }}" class="product-image" />
+      
+      <div class="product-details">
+        <h3 class="product-name">{{ getProduct()?.name }}</h3>
+        <p class="product-description">{{ getProduct()?.description }}</p>
+      </div>
     </div>
+  </div>
 </div>

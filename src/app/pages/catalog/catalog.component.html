@@ -1,0 +1,28 @@
+<header>
+    <app-header>
+        <button class="share-button" (click)="shareLink()">
+            <img src="./assets/Digital_Glyph_Green.png" alt="icon whatsapp" width="15px">
+            Compartilhar
+        </button>
+    </app-header>
+    <app-search-bar></app-search-bar>
+</header>
+<nav class="nav-bar">
+    <input type="button" value="TODOS" (click)="searchByCategory('')">
+    <input type="button" *ngFor="let categorie of categories" value="{{ categorie }}"
+        (click)="searchByCategory(categorie.toLocaleLowerCase())">
+</nav>
+<div class="container">
+    <p class="qtd">Produtos encontrados: <strong>{{products.length}}</strong></p>
+    <app-preview></app-preview>
+    <section id="product-container" class="product-container" [ngClass]="isVisible()">
+        <app-product *ngFor="let product of products" 
+            [product]="product">
+                <button (click)="contactSeller(product)" class="contactSeller">
+                    <img src="./assets/Digital_Glyph_Green.png" alt="" width="10px">
+                    Contatar
+                </button></app-product>
+    </section>
+</div>
+<app-footer></app-footer>
+<app-message-dialog></app-message-dialog>

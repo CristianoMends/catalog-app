@@ -3,16 +3,17 @@ import { Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, NgForm, Validators } from '@angular/forms';
 import { User } from '../../interface/user.interface';
 import { UserService } from '../../service/user.service';
-import { MessageDialogComponent } from '../message-dialog/message-dialog.component';
+import { MessageDialogComponent } from '../../components/message-dialog/message-dialog.component';
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
-import { LoadingScreenComponent } from '../loading-screen/loading-screen.component';
+import { LoadingScreenComponent } from '../../components/loading-screen/loading-screen.component';
+import { HeaderComponent } from "../../components/header/header.component";
 
 @Component({
   selector: 'app-register',
   standalone: true,
   templateUrl: './register-user.component.html',
   styleUrl: './register-user.component.css',
-  imports: [CommonModule, FormsModule, MessageDialogComponent]
+  imports: [CommonModule, FormsModule, MessageDialogComponent, HeaderComponent]
 })
 export class RegisterUserComponent {
   constructor(
@@ -29,6 +30,10 @@ export class RegisterUserComponent {
   hideConfirmPassword = true;
 
   @ViewChild('registerForm') registerForm!: NgForm;
+
+  goBack() {
+    window.location.href = '/';
+  }
 
   onSubmit() {
     if (this.registerForm.valid) {
