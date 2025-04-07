@@ -103,12 +103,7 @@ export class CatalogComponent {
   }
 
   sendMessage(phone: string, message: string): void {
-    const cleanedPhone = phone.replace(/\D/g, ''); // Remove tudo que não for número
-  
-    if (!cleanedPhone || cleanedPhone.length < 10) {
-      console.error('Telefone inválido');
-      return;
-    }
+    const cleanedPhone = phone.replace(/\D/g, ''); // Remove tudo que não for números
   
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     const encodedMessage = encodeURIComponent(message);
