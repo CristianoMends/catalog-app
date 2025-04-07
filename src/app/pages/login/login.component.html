@@ -1,0 +1,45 @@
+<div (click)="goBack()" class="go-back">
+  <img width="64" height="64" src="https://img.icons8.com/glyph-neue/64/long-arrow-left.png" alt="long-arrow-left"/>
+  Voltar para página inicial
+</div>
+
+<div class="container">
+  <h2>Faça login na sua conta</h2>
+  <form (ngSubmit)="onSubmit()">
+    <input 
+      type="email" 
+      id="email" 
+      [(ngModel)]="getAuth().email" 
+      name="email" 
+      required 
+      placeholder="Digite seu e-mail" 
+    />
+
+    <div class="passwordContainer">
+      <input 
+        [type]="type" 
+        id="password" 
+        [(ngModel)]="getAuth().password" 
+        name="password" 
+        required 
+        minlength="6" 
+        placeholder="Digite sua senha" 
+      />
+      <button type="button" (click)="toggleVisibility()">
+        <img 
+          [src]="!isVisible ? './assets/show.png' : './assets/hide.png'" 
+          alt="Alternar visibilidade" 
+          width="20" 
+        />
+      </button>
+    </div>
+
+    <button type="submit">Entrar</button>
+    
+    <div class="register-link">
+      Não tem uma conta? <a href="/register">Crie uma</a>
+    </div>
+  </form>
+</div>
+
+<app-message-dialog></app-message-dialog>

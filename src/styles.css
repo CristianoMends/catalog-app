@@ -2,11 +2,12 @@
     --default-color-1: #393939;
     --background: radial-gradient(circle, #000, rgb(57, 57, 83), #333333);
     --btn-color-2: #fff;
-    --btn-color-1: var(--btn-color-2);
+    --btn-color-1: #275dae;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     --default-color-3: #111;
     --default-color-4: #ccc;
     --default-color-5: #700;
-    --shadow: 2px 1px 5px #555;
+    --shadow: 2px 1px 5px #55555569;
     --blue: #112;
 }
 
@@ -19,7 +20,6 @@
     font-family: "Poetsen One", sans-serif;
     font-weight: 400;
     font-style: normal;
-
 }
 
 html,
@@ -38,7 +38,57 @@ body {
     background-position: center;
     background-size: cover;
     color: #fff;
+
     text-shadow: 1px 1px 1px black;
+    animation: fadeIn 0.7s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Custom Scrollbar para navegadores WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 12px;
+    /* Largura da scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* Cor de fundo do trilho */
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Cor da barra */
+    border-radius: 6px;
+    border: 3px solid #f1f1f1;
+    /* Cria um "padding" interno */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    /* Cor ao passar o mouse */
+}
+
+/* Custom Scrollbar para Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+    /* Cor da thumb e do track, respectivamente */
+}
+button{
+    box-shadow: var(--shadow);
+}
+button:hover {
+    cursor: pointer;
 }
 
 @media (max-width: 599px) {

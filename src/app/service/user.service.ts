@@ -4,7 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, catchError, tap } from 'rxjs';
 import { Profile } from '../interface/profile.interface';
 import { User } from '../interface/user.interface';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({

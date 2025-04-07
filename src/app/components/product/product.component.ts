@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../../interface/product.interface';
 import { PreviewComponent } from '../preview/preview.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   providers: [PreviewComponent],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'

@@ -13,13 +13,4 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FooterComponent {
 
-  @Input() message:string = '';
-
-  sendEmail(message: string): void {
-    const subject = encodeURIComponent('Interesse no Portfólio');
-    const emailBody = encodeURIComponent(message)
-    window.open(`mailto:mendescristiano012@gmail.com?subject=${subject}&body=${emailBody}`, '_blank')
-  }
-
-
 }

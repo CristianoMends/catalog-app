@@ -1,45 +1,74 @@
-
+/* Container da Barra de Busca */
 .search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    padding: 10px 15px;
-    background-color: var(--blue);
-  }
-  
-  .search-input {
-    text-align: start;
-    border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  padding: 12px 20px;
+  background-color: var(--blue); /* Certifique-se de definir essa variável */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Input de Busca */
+.search-input {
+  flex: 1;
+  max-width: 400px;
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  border-radius: 5px 0 0 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Botão de Busca */
+.search-button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  background-color: var(--btn-color-1); /* Defina essa variável conforme sua identidade visual */
+  color: #fff;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-left: 1px solid #000;
+}
+
+/* Hover no Botão de Busca */
+.search-button:hover {
+  background-color: var(--btn-color-2); /* Defina essa variável */
+  color: black;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  header {
     padding: 10px;
+  }
+  .nav-bar {
+    padding: 10px;
+  }
+  .nav-bar input[type="button"] {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+  .qtd {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 599px) {
+  * {
+    font-size: 14px;
+  }
+  .nav-bar {
     width: 100%;
-    outline: none;
-    border-right: none;
-    border-radius: 5px 0px 0px 5px;
-    max-width: 400px;
-    box-shadow: var(--shadow);
-    border: none;
   }
-  
-  .search-button {
-    background-color: var(--btn-color-1);
-    color: #000;
-    padding: 10px;
-    cursor: pointer;
-    width: max-content;
-    border-radius: 0px 5px 5px 0px;
-    box-shadow: var(--shadow);
-    border: none;
-    border-left: 1px solid #000;
-
-  }
-  
-  .search-button:hover {
-    background-color: var(--default-color-3);
-    color: #fff;
-  }
-  @media (max-width: 599px) {
-    .search-container{
-
-    }
 }

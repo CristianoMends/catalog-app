@@ -1,0 +1,68 @@
+<div (click)="goBack()" class="go-back">
+  <img width="64" height="64" src="https://img.icons8.com/glyph-neue/64/long-arrow-left.png" alt="long-arrow-left"/>
+  Voltar para página inicial
+</div>
+
+<div class="container">
+  <h2>Crie sua conta</h2>
+  <form #registerForm="ngForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-content">
+      <div class="side-image-container">
+        <img class="side-image" src="../../../assets/vistro.png" alt="Imagem decorativa">
+      </div>
+
+      <div class="fields">
+        
+        <div class="input-wrapper">
+          <input type="text" name="name" [(ngModel)]="user.fullName" #name="ngModel" required placeholder="Nome da loja" />
+          <span *ngIf="name.invalid && (name.dirty || name.touched)" class="dot-alert">!</span>
+        </div>
+
+        <div class="input-wrapper">
+          <input type="tel" name="phone" [(ngModel)]="user.phone" #phone="ngModel" required
+            pattern="[0-9]{2}[0-9]{5}[0-9]{4}" placeholder="Telefone (Ex: 11999999999)" />
+          <span *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="dot-alert">!</span>
+        </div>
+
+        <div class="input-wrapper">
+          <input type="text" name="address" [(ngModel)]="user.address" #address="ngModel" required
+            placeholder="Endereço" />
+          <span *ngIf="address.invalid && (address.dirty || address.touched)" class="dot-alert">!</span>
+        </div>
+
+        <div class="input-wrapper">
+          <input type="email" name="email" [(ngModel)]="user.email" #email="ngModel" required placeholder="E-mail" />
+          <span *ngIf="email.invalid && (email.dirty || email.touched)" class="dot-alert">!</span>
+        </div>
+
+        <div class="passwordContainer input-wrapper">
+          <input [type]="hidePassword ? 'password' : 'text'" name="password" [(ngModel)]="user.password"
+            #password="ngModel" required minlength="6" maxlength="12" placeholder="Senha" />
+          <button type="button" (click)="toggleVisibility('password')">
+            <img [src]="hidePassword ? './assets/show.png' : './assets/hide.png'" alt="Alternar visibilidade"
+              width="20" />
+          </button>
+          <span *ngIf="password.invalid && (password.dirty || password.touched)" class="dot-alert">!</span>
+        </div>
+
+        <div class="passwordContainer input-wrapper">
+          <input [type]="hideConfirmPassword ? 'password' : 'text'" name="confirm" #confirm="ngModel" ngModel required
+            [ngModelOptions]="{standalone: true}" placeholder="Confirmar senha" />
+          <button type="button" (click)="toggleVisibility('confirm')">
+            <img [src]="hideConfirmPassword ? './assets/show.png' : './assets/hide.png'"
+              alt="Alternar visibilidade" width="20" />
+          </button>
+          <span *ngIf="password.value !== confirm.value && (confirm.dirty || confirm.touched)" class="dot-alert">!</span>
+        </div>
+
+        <button type="submit" [disabled]="registerForm.invalid || password.value !== confirm.value">Registrar</button>
+        <div class="login-link">
+          Já tem uma conta? <a href="/login">Faça login</a>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<app-message-dialog></app-message-dialog>

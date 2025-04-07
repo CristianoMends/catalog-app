@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MainComponent } from '../catalog/main.component';
+import { CatalogComponent } from '../../pages/catalog/catalog.component';
 
 @Component({
   selector: 'app-search-bar',
@@ -12,7 +12,7 @@ import { MainComponent } from '../catalog/main.component';
 export class SearchBarComponent {
   searchTerm!:string
 
-  constructor(private readonly mainComponente:MainComponent){}
+  constructor(private readonly mainComponente:CatalogComponent){}
 
   onSubmit(): void {
     this.mainComponente.searchByName(this.searchTerm);

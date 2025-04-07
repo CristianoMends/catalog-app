@@ -1,38 +1,41 @@
-<app-message-dialog></app-message-dialog>
 <div class="register" id="register">
-    
-    <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">    
-      <label for="name">Nome:</label>
-      <input #name="ngModel" type="text" id="name" [(ngModel)]="product.name" name="name" [value]="product.name" required>
-      <span *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
-        Nome é obrigatório.
-      </span>
+  <h3>Atualize um produto</h3>
   
-      <label for="category">Categoria:</label>
-      <select id="category" [(ngModel)]="product.category" name="category" [value]="product.category" required>
-        <option value="{{product.category}}" disabled selected>{{product.category}}</option>
-        <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
-      </select>
-      <span *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
-        A categoria é obrigatória.
-      </span>
+  <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+    <label for="name">Nome:</label>
+    <input #name="ngModel" type="text" id="name" [(ngModel)]="product.name" name="name" [value]="product.name" required>
+    <span *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+      Nome é obrigatório.
+    </span>
 
-      <label for="description">Descrição:</label>
-      <textarea #description="ngModel" id="description" [(ngModel)]="product.description" name="description" [value]="product.description" required></textarea>
-      <span *ngIf="description.invalid && (description.dirty || description.touched)" class="alert">
-        Descrição é obrigatória.
-      </span>
-  
-      <label for="price">Preço:</label>
-      <input #price="ngModel" type="number" id="price" [(ngModel)]="product.price" name="price" [value]="product.price" required min="0" placeholder="R$">
-      <span *ngIf="price.invalid && (price.dirty || price.touched)" class="alert">
-        Insira um valor válido (maior ou igual a zero).
-      </span>
-  
-      <label for="image">Imagem:</label>
-      <input type="file" id="image" (change)="onFileSelected($event)" accept="image/png, image/jpeg, image/jpg">
-  
-      <button type="submit" [disabled]="registerForm.invalid">Atualizar</button>
-    </form>
-  </div>
-  
+    <label for="category">Categoria:</label>
+    <select id="category" [(ngModel)]="product.category" name="category" [value]="product.category" required>
+      <option value="{{product.category}}" disabled selected>{{product.category}}</option>
+      <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+    </select>
+    <span *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+      A categoria é obrigatória.
+    </span>
+
+    <label for="description">Descrição:</label>
+    <textarea #description="ngModel" id="description" [(ngModel)]="product.description" name="description"
+      [value]="product.description" required></textarea>
+    <span *ngIf="description.invalid && (description.dirty || description.touched)" class="alert">
+      Descrição é obrigatória.
+    </span>
+
+    <label for="price">Preço:</label>
+    <input #price="ngModel" type="number" id="price" [(ngModel)]="product.price" name="price" [value]="product.price"
+      required min="0" placeholder="R$">
+    <span *ngIf="price.invalid && (price.dirty || price.touched)" class="alert">
+      Insira um valor válido (maior ou igual a zero).
+    </span>
+
+    <label for="image">Imagem:</label>
+    <input type="file" id="image" (change)="onFileSelected($event)" accept="image/png, image/jpeg, image/jpg">
+
+    <button type="submit" [disabled]="registerForm.invalid">Atualizar</button>
+  </form>
+</div>
+
+<app-message-dialog></app-message-dialog>

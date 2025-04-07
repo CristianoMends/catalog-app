@@ -1,0 +1,200 @@
+.container {
+    position: relative;
+    background: url('https://source.unsplash.com/1600x900/?technology,workspace') no-repeat center center/cover;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+
+}
+
+form {
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 8px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: var(--shadow);
+}
+
+a {
+    color: var(--btn-color-1);
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    text-align: start;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="email"],
+input[type="text"] {
+    padding: 8px;
+    border-radius: 4px;
+    width: 100%;
+    border: none;
+    box-shadow: var(--shadow);
+}
+
+button[type="submit"] {
+    padding: 12px;
+    background-color: var(--btn-color-1);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--btn-color-2);
+    color: black;
+}
+
+.passwordContainer {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 5px;
+    border: none;
+    box-shadow: var(--shadow);
+    background-color: white;
+}
+
+.passwordContainer input {
+    border: none;
+    box-shadow: none;
+}
+
+input:focus {
+    outline: none;
+    border: none;
+}
+
+.passwordContainer button {
+    background: white;
+    border: 1px solid #ddd;
+    border-left: none;
+    padding: 13.5px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: none;
+    border: none;
+}
+
+.alert {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    text-align: start;
+}
+
+.form-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.side-image {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    aspect-ratio: 3/2;
+}
+
+.side-image-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fields {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper input {
+    flex: 1;
+}
+
+input[type="submit"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.go-back {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.go-back img {
+    height: 30px;
+    width: auto;
+}
+
+.dot-alert {
+    margin-left: 8px;
+    position: absolute;
+    right: 1%;
+    color: red;
+}
+
+@media (max-width: 768px) {
+    .form-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .side-image {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    form {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    form {
+        width: 90%;
+    }
+
+    .side-image {
+        display: none;
+    }
+}
